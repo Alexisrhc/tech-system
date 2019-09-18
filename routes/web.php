@@ -11,8 +11,9 @@
 |
 */
 
+//rutas de login
+
+
 Route::get('/', function () {
     return view('welcome');
-
-    //Alexisrhc && Palma001
 });
