@@ -14,3 +14,7 @@ una de lasa primeras contribuciones la tiene el señor Luis Palma @Palma001
 ## Licencia
 
 El equipo de Nodo's Creative se encuentra trabajando en esto.
+
+## Autor
+
+El encargado del sistema es: <a href="http://alexisrhc.com.ve">Alexis Hernandez</a>
