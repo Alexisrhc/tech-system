@@ -23,5 +23,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //cliente
-Route::get('/client', 'ClientController@index')->name('client');
-Route::get('/client/create', 'ClientController@create')->name('client-create');
+Route::middleware(['Auth'])->group(function () {
+    Route::get('/client', 'ClientController@index')->name('client');
+    Route::get('/client/create', 'ClientController@create')->name('client-create');
+});
