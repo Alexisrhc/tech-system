@@ -55,7 +55,9 @@
             </div>
             <div class="card-footer py-4">
               <nav aria-label="...">
+                <ul class="pagination justify-content-end mb-0">
                   {{ $clients->links() }}
+                </ul>
               </nav>
             </div>
           </div>
