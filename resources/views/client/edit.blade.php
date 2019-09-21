@@ -3,7 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-12 mb-4">
-        	<h2 class="text-white">{{ ucwords('agregar nuevo cliente') }}</h2>
+        	<h2 class="text-white">{{ ucwords('editar cliente') }}</h2>
         </div>
         <div class="col-md-12">
         	<form  method="POST" action="/client">

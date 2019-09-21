@@ -49,7 +49,7 @@
                         {{ucwords($client->address)}}
                       </td>
                       <td>
-                        <a href="{{ route('client-edit') }}/{{$client->id_client}}" class="btn btn-success">Edit</a>
+                        <a href="client/edit/{{$client->id_client}}" class="btn btn-success">Edit</a>
                       </td>
                     </tr>
                   @endforeach
