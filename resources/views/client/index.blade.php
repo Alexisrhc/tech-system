@@ -50,7 +50,7 @@
                         {{ucwords($client->address)}}
                       </td>
                       <td>
-                        <a href="client/edit/{{$client->id_client}}" class="btn btn-success">Edit</a>
+                        <a href="client/edit/{{$client->id_client}}" class="btn btn-success btn-sm">Editar</a>
                       </td>
                     </tr>
                   @endforeach
