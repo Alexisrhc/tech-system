@@ -21,3 +21,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//cliente
+Route::get('/client', 'ClientController@index')->name('client');

@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>
-    OVA INSCRIPCIONES
+    Tech-System
   </title>
   <link href="assets/img/brand/favicon.png" rel="icon" type="image/png">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
@@ -87,8 +87,16 @@
         </form>
         <!-- Navigation  telefono-->
         <ul class="navbar-nav">
-          <li class="nav-item  class=" active" ">
-          <a class=" nav-link active " href=" index.html"> <i class="ni ni-tv-2 text-primary"></i> Inicio
+          <li class="nav-item active">
+            <a class="nav-link active" href="{{ route('home') }}">
+              <i class="ni ni-tv-2 text-primary"></i>
+              Inicio
+            </a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link " href="{{ route('client') }}">
+              <i class="ni ni-single-02 text-blue"></i>
+              Cliente
             </a>
           </li>
 
@@ -148,7 +156,7 @@
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
             </form>
-              
+
           </div>
           </li>
         </ul>
@@ -158,7 +166,7 @@
        <div class="container-fluid">
         <div class="header-body">
           <!-- Card stats -->
-          <div class="row">
+          {{-- <div class="row">
             <div class="col-xl-4 col-lg-6">
               <div class="card card-stats mb-4 mb-xl-0">
                 <div class="card-body">
@@ -222,11 +230,11 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> --}}
         </div>
       </div>
     </div>
-    <div class="container-fluid mt--7">
+    <div class="container-fluid mt--8">
       @yield('content')
       <footer class="footer">
         <div class="row align-items-center justify-content-xl-between">
