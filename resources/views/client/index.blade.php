@@ -13,7 +13,7 @@
         <div class="col">
           <div class="card shadow">
             <div class="card-header border-0">
-              <h3 class="mb-0">Card tables</h3>
+              <h3 class="mb-0">Lista De Clientes</h3>
             </div>
             <div class="table-responsive">
               <table class="table align-items-center table-flush">
@@ -31,19 +31,22 @@
                   @foreach ($clients as $client)
                     <tr>
                       <td>
-                        {{$client->documents}}
+                        {{$client->document}}
                       </td>
                       <td>
-                        {{$client->name}}
+                        {{ ucwords($client->name)}}
                       </td>
                       <td>
-                        {{$client->lasname}}
+                        {{ucwords($client->lastname)}}
                       </td>
                       <td>
                         {{$client->email}}
                       </td>
-                      <td class="text-right">
+                      <td>
                         {{$client->phone}}
+                      </td>
+                      <td>
+                        {{ucwords($client->address)}}
                       </td>
                     </tr>
                   @endforeach

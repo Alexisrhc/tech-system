@@ -8,6 +8,26 @@ use App\Client;
 class ClientController extends Controller
 {
     /**
+     * validate data of request
+     * @param  [Request] $request data
+     * @param  [String] $documents number documents
+     * @return [Function]  function validator
+     */
+    private function validation ($request, $documents) {
+        if ($documents !== null) {
+            $unique = Rule::unique('clients')->ignore($request->document, 'document');
+        } else {
+            $unique = 'unique:clients';
+        }
+        $validator = Validator::make($request->all(), [
+            'document' => 'required|unique:clients|max:10',
+            'name' => 'required',
+            'lastname' => 'required',
+            'email' => 'required'
+        ]);
+        return $validator;
+    }
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -38,6 +58,9 @@ class ClientController extends Controller
     {
         // Validate the request...
 
+        if ($this->validation($request, null)->fails()) {
+            return $this->create();
+        }
         $client = new Client;
         $client->document = $request->document;
         $client->name = $request->name;

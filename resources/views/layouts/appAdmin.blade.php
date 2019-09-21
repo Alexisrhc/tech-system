@@ -45,8 +45,8 @@
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="{{ route('logout') }}"
                onclick="event.preventDefault();
-                             document.getElementById('logout-form').submit();">
-                             <i class="ni ni-user-run"></i>
+                  document.getElementById('logout-form').submit();">
+                  <i class="ni ni-user-run"></i>
                 {{ __('Logout') }}
             </a>
 
@@ -148,8 +148,8 @@
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="{{ route('logout') }}"
                onclick="event.preventDefault();
-                             document.getElementById('logout-form').submit();">
-                             <i class="ni ni-user-run"></i>
+                  document.getElementById('logout-form').submit();">
+                  <i class="ni ni-user-run"></i>
                 {{ __('Logout') }}
             </a>
 

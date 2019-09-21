@@ -98,7 +98,7 @@
 				<div class="row">
 				<div class="col-12 text-right">
 					<button class="btn btn-success">Agregar</button>
-					<button class="btn btn-danger">Cancelar</button>
+					<a class="btn btn-danger" href="{{route('client')}}">Cancelar</a>
 				</div>
 				</div>
 			</form>
