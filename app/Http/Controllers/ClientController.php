@@ -14,7 +14,8 @@ class ClientController extends Controller
      */
     public function index()
     {
-        return view('client.index');
+        $clients = Client::all();
+        return view('client.index', ['clients' => $clients]);
     }
 
     /**
@@ -45,7 +46,7 @@ class ClientController extends Controller
         $client->address = $request->address;
         $client->phone = $request->phone;
         $client->save();
-        $this->index();
+        return $this->index();
     }
 
     /**
