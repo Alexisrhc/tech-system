@@ -25,5 +25,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 //cliente
 Route::middleware(['auth'])->group(function () {
     Route::get('/client', 'ClientController@index')->name('client');
+    Route::post('/client', 'ClientController@store')->name('client');
     Route::get('/client/create', 'ClientController@create')->name('client-create');
 });
