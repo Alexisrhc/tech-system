@@ -54,7 +54,9 @@
               </table>
             </div>
             <div class="card-footer py-4">
-                {{ $clients->links() }}
+              <nav aria-label="...">
+                  {{ $clients->links() }}
+              </nav>
             </div>
           </div>
         </div>
