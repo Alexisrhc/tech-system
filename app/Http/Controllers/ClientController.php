@@ -37,7 +37,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $clients = DB::table('clients')->paginate(1);
+        $clients = DB::table('clients')->paginate(2);
         return view('client.index', ['clients' => $clients]);
     }
 
@@ -94,7 +94,8 @@ class ClientController extends Controller
      */
     public function edit($id)
     {
-        //
+        $client = DB::table('clients')->where('id_client', $id);
+        return view('client.edit', ['client' => $client]);
     }
 
     /**
