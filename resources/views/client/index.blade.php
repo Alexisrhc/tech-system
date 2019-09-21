@@ -25,6 +25,7 @@
                     <th scope="col">Email</th>
                     <th scope="col">Telefono</th>
                     <th scope="col">Dirección</th>
+                    <th>Acción</th>
                   </tr>
                 </thead>
                 <tbody>
