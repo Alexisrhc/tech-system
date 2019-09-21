@@ -3,10 +3,10 @@
 @section('content')
     <div class="row">
         <div class="col-md-12 text-right">
-        	<button class="btn btn-sm btn-success">
+        	<a href="{{ route('client-create') }}" class="btn btn-sm btn-success">
         		Agregar Cliente
         		<i class="ni ni-fat-add text-yellow"></i>
-        	</button>
+        	</a>
         </div>
     </div>
     <div class="row mt-3">
