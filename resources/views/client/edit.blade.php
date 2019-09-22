@@ -8,7 +8,8 @@
         			<h2 class="">{{ ucwords('editar cliente') }}</h2>
 	    		</div>
 	    		<div class="card-body pt-0 pt-md-4">
-			    	<form  method="POST" action="{{ route('client')}}">
+			    	<form  method="POST" action="{{ route('client.update', $client[0]->id_client)}}">
+			    		@method('PUT')
 						@csrf
 						<div class="row mb-2">
 							<div class="col-4">

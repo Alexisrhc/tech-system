@@ -8,7 +8,7 @@
         			<h2>{{ ucwords('agregar nuevo cliente') }}</h2>
 	    		</div>
 	    		<div class="card-body pt-0 pt-md-4">
-		        	<form  method="POST" action="{{ route('client') }}">
+		        	<form  method="POST" action="{{ route('client.store') }}">
 						@csrf
 						<div class="row mb-2">
 							<div class="col-4">
@@ -16,7 +16,7 @@
 									<div class="input-group-prepend">
 										<span class="input-group-text"><i class="ni ni-badge"></i></span>
 									</div>
-									<input type="text" class="form-control @error('document') is-invalid @enderror" name="document" value="{{ old('email') }}" required autocomplete="Documento" placeholder="V-00000000">
+									<input type="text" class="form-control @error('document') is-invalid @enderror" name="document" value="{{ old('document') }}" required autocomplete="Documento" placeholder="V-00000000">
 
 									@error('document')
 										<span class="invalid-feedback" role="alert">
