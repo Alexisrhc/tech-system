@@ -87,14 +87,14 @@
         </form>
         <!-- Navigation  telefono-->
         <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link active" href="{{ route('home') }}">
+          <li class="nav-item">
+            <a class="nav-link {{ Request::is('home') ? 'active' : '' }}" href="{{ route('home') }}">
               <i class="ni ni-tv-2 text-primary"></i>
               Inicio
             </a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link " href="{{ route('client') }}">
+            <a class="nav-link {{ Request::is('client') ? 'active' : '' }}" href="{{ route('client') }}">
               <i class="ni ni-single-02 text-blue"></i>
               Cliente
             </a>
