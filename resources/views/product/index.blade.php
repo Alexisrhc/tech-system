@@ -61,7 +61,7 @@
                         {{$product->price}}
                       </td>
                       <td>
-                        <form action="{{route('client.destroy', $product->id_product)}}" method="POST">
+                        <form action="{{route('product.destroy', $product->id_product)}}" method="POST">
                           <a href="{{route('product.edit', $product->id_product)}}" class="btn btn-success btn-sm">
                             <i class="ni ni-ruler-pencil"></i>
                           </a>
