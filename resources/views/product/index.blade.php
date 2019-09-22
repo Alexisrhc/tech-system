@@ -52,7 +52,7 @@
                         {{ucwords(ucwords($product->name))}}
                       </td>
                       <td>
-                        {{substr($product->Description, 0, 30)}}
+                        {{substr($product->description, 0, 30)}}
                       </td>
                       <td>
                         {{$product->quantity}}
