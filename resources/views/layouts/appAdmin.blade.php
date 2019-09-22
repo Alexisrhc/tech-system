@@ -99,7 +99,12 @@
               Cliente
             </a>
           </li>
-
+          <li class="nav-item active">
+            <a class="nav-link {{ Request::is('product') ? 'active' : '' }}" href="{{ route('product') }}">
+              <i class="ni ni-single-02 text-blue"></i>
+              Productos
+            </a>
+          </li>
         </ul>
       </div>
     </div>

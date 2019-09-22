@@ -16,14 +16,14 @@ Route::get('/', function () {
 });
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-//cliente
 Route::middleware(['auth'])->group(function () {
-	Route::resource('/client', 'ClientController');
+    // Home
+    Route::get('/home', 'HomeController@index')->name('home');
+    // Client
+    Route::resource('/client', 'ClientController');
     Route::get('/client', 'ClientController@index')->name('client');
+    // Route Products
+    Route::resource('/client', 'ProductController');
+    Route::get('/product', 'ProductController@index')->name('product');
 });
