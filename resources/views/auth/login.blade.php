@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>
-    Argon Dashboard - Free Dashboard for Bootstrap 4 by Creative Tim
+    TECHNOLOGICAL-SYSTEM | LOGIN
   </title>
   <link href="assets/img/brand/favicon.png" rel="icon" type="image/png">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
@@ -17,7 +17,7 @@
   <div class="main-content">
     <nav class="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark">
       <div class="container px-4">
-        <a class="navbar-brand" href="../index.html">
+        <a class="navbar-brand" href="{{ route('login') }}">
           <img src="../assets/img/brand/white.png" />
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse-main" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,8 +47,8 @@
         <div class="header-body text-center mb-7">
           <div class="row justify-content-center">
             <div class="col-lg-5 col-md-6">
-              <h1 class="text-white">Welcome!</h1>
-              <p class="text-lead text-light">Use these awesome forms to login or create new account in your project for free.</p>
+              <h1 class="text-white">Bienvenido!</h1>
+              <p class="text-lead text-light">Al sistema interno de Technological Project.</p>
             </div>
           </div>
         </div>
@@ -63,10 +63,10 @@
       <div class="row justify-content-center">
         <div class="col-lg-5 col-md-7">
           <div class="card bg-secondary shadow border-0">
-            
+
             <div class="card-body px-lg-5 py-lg-5">
               <div class="text-center text-muted mb-4">
-                <small>Or sign in with credentials</small>
+                <small>Inicie con sus credenciales</small>
               </div>
               <form method="POST" action="{{ route('login') }}">
                 @csrf
@@ -75,7 +75,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                     </div>
-                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Email">
+                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Correo Electronico">
 
                     @error('email')
                         <span class="invalid-feedback" role="alert">
@@ -89,7 +89,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                     </div>
-                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Password">
+                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Contraseña">
 
                     @error('password')
                         <span class="invalid-feedback" role="alert">
@@ -98,15 +98,15 @@
                     @enderror
                   </div>
                 </div>
-                
+
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary">
-                        {{ __('Login') }}
+                        {{ __('Inicar') }}
                     </button>
 
                     @if (Route::has('password.request'))
                         <a class="btn btn-link" href="{{ route('password.request') }}">
-                            {{ __('Forgot Your Password?') }}
+                            {{ __('Recuperar mi clave') }}
                         </a>
                     @endif
                 </div>
@@ -116,9 +116,9 @@
           <div class="row mt-3">
             <div class="col-6">
             </div>
-            <div class="col-6 text-right">
+            {{-- <div class="col-6 text-right">
               <a href="{{ route('register') }}" class="text-light"><small>Create new account</small></a>
-            </div>
+            </div> --}}
           </div>
         </div>
       </div>
@@ -128,11 +128,11 @@
         <div class="row align-items-center justify-content-xl-between">
           <div class="col-xl-6">
             <div class="copyright text-center text-xl-left text-muted">
-              © 2018 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">Creative Tim</a>
+              © {{ date('Y') }} <a href="http://alexisrhc.com.ve" target="_blank" class="font-weight-bold ml-1" target="_blank">Nodo's Creative</a>
             </div>
           </div>
           <div class="col-xl-6">
-            
+
           </div>
         </div>
       </div>

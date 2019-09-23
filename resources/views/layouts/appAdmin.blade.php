@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>
-    Tech-System
+    Tech-System | Dashboard
   </title>
   <link href="{{ asset('assets/img/brand/favicon.png') }}" rel="icon" type="image/png">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
@@ -26,7 +26,7 @@
           <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <div class="media align-items-center">
               <span class="avatar avatar-sm rounded-circle">
-                <img src="{{ asset('assets/img/theme/team-2-800x800.jpg') }}">
+                <img src="{{ asset('assets/img/theme/team-1-800x800.jpg') }}">
               </span>
             </div>
           </a>
@@ -95,14 +95,20 @@
           </li>
           <li class="nav-item active">
             <a class="nav-link {{ Request::is('client') ? 'active' : '' }}" href="{{ route('client') }}">
-              <i class="ni ni-single-02 text-blue"></i>
+              <i class="ni ni-single-02 text-primary"></i>
               Cliente
             </a>
           </li>
           <li class="nav-item active">
             <a class="nav-link {{ Request::is('product') ? 'active' : '' }}" href="{{ route('product') }}">
-              <i class="ni ni-single-02 text-blue"></i>
+              <i class="ni ni-building text-primary"></i>
               Productos
+            </a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link {{ Request::is('seller') ? 'active' : '' }}" href="{{ route('seller') }}">
+              <i class="ni ni-single-02 text-primary"></i>
+              Vendedores
             </a>
           </li>
         </ul>
@@ -245,8 +251,8 @@
         <div class="row align-items-center justify-content-xl-between">
           <div class="col-xl-6">
             <div class="copyright text-center text-xl-left text-muted">
-              &copy; 2018
-              <a href="http://www.alexis-com.ve" class="font-weight-bold text-muted ml-1" target="_blank">Alexis Hernández & Luis Palma</a>
+              &copy; {{ date('Y') }}
+              <a href="http://www.alexisrhc.com.ve" class="font-weight-bold text-muted ml-1" target="_blank">Nodo's Creative</a>
             </div>
           </div>
           <!-- <div class="col-xl-6">

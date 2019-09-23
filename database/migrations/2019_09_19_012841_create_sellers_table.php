@@ -19,7 +19,9 @@ class CreateSellersTable extends Migration
             $table->string('name');
             $table->string('lastname');
             $table->string('code');
+            $table->string('email');
             $table->string('password');
+            $table->string('type_user');
             $table->timestamps();
         });
     }

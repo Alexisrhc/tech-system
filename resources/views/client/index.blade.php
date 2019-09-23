@@ -58,7 +58,7 @@
                         {{$client->phone}}
                       </td>
                       <td>
-                        {{substr(ucwords($client->address), 0, 20)}}
+                        {{substr(ucwords($client->address), 0, 10)}}
                       </td>
                       <td>
                         <form action="{{route('client.destroy', $client->id_client)}}" method="POST">
@@ -77,7 +77,7 @@
             </div>
             <div class="card-footer py-4">
               <nav aria-label="...">
-                <ul class="pagination justify-content-end mb-0">
+                <ul class="pagination justify-content-center mb-0">
                   {{ $clients->links() }}
                 </ul>
               </nav>

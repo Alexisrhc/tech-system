@@ -26,4 +26,7 @@ Route::middleware(['auth'])->group(function () {
     // Route Products
     Route::resource('/product', 'ProductController');
     Route::get('/product', 'ProductController@index')->name('product');
+    // Route Seller
+    Route::resource('/seller', 'SellerController');
+    Route::get('/seller', 'SellerController@index')->name('seller');
 });
