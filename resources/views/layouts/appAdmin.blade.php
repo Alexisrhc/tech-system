@@ -140,7 +140,7 @@
                   <img src="{{ asset('assets/img/theme/team-1-800x800.jpg') }}">
                 </span>
                 <div class="media-body ml-2 d-none d-lg-block">
-                  <span class="mb-0 text-sm  font-weight-bold">{{ ucwords(Auth::user()->name) }}</span>
+                  <span class="mb-0 text-sm  font-weight-bold">{{ ucwords(Auth::user()->name .' '.Auth::user()->lastname)  }}</span>
                 </div>
               </div>
             </a>
