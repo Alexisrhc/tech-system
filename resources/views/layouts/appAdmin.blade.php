@@ -88,25 +88,25 @@
         <!-- Navigation  telefono-->
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link {{ Request::is('home') ? 'active' : '' }}" href="{{ route('home') }}">
+            <a class="nav-link {{ Request::is('home') || Request::is('home/create')  ? 'active' : '' }}" href="{{ route('home') }}">
               <img src="{{ asset('assets/img/svg/home.svg') }}" width="18px" class="mr-3">
               Inicio
             </a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link {{ Request::is('client') ? 'active' : '' }}" href="{{ route('client') }}">
+            <a class="nav-link {{ Request::is('client') || Request::is('client/create') ? 'active' : '' }}" href="{{ route('client') }}">
               <img src="{{ asset('assets/img/svg/client.svg') }}" width="18px" class="mr-3">
               Clientes
             </a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link {{ Request::is('product') ? 'active' : '' }}" href="{{ route('product') }}">
+            <a class="nav-link {{ Request::is('product') || Request::is('product/create') ? 'active' : '' }}" href="{{ route('product') }}">
               <img src="{{ asset('assets/img/svg/layers-3_primary.svg') }}" width="18px" class="mr-3">
               Productos
             </a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link {{ Request::is('seller') ? 'active' : '' }}" href="{{ route('seller') }}">
+            <a class="nav-link {{ Request::is('seller') || Request::is('seller/create') ? 'active' : '' }}" href="{{ route('seller') }}">
               <img src="{{ asset('assets/img/svg/seller.svg') }}" width="18px" class="mr-3">
               Empleados
             </a>
