@@ -17,7 +17,7 @@ class SellerController extends Controller
      * @return [Function]  function validator
      */
     private function validation (Request $request, $documents) {
-        if (Auth::user()->rol_user == 'admin') {
+        // if (Auth::user()->rol_user == 'admin') {
             # esto es si el logeado es admin debe hacer el EDIT
             if ($documents !== null) {
                 $unique = Rule::unique('users')->ignore($request->document, 'document');
@@ -26,7 +26,7 @@ class SellerController extends Controller
                 $unique = 'unique:users';
                 $password = 'required';
             }
-        }
+        // }
         $validator = $request->validate([
             'document' =>  $unique,
             'code' =>  $unique,
@@ -67,15 +67,15 @@ class SellerController extends Controller
     public function store(Request $request)
     {
         $this->validation($request, null);
-        $seller = new User;
-        $seller->code = $request->code;
-        $seller->document = $request->document;
-        $seller->name = $request->name;
-        $seller->lastname = $request->lastname;
-        $seller->email = $request->email;
-        $seller->password = Hash::make($request->password);
-        $seller->rol_user = $request->rol_user;
-        $seller->save();
+        $employee = new User;
+        $employee->code = $request->code;
+        $employee->document = $request->document;
+        $employee->name = $request->name;
+        $employee->lastname = $request->lastname;
+        $employee->email = $request->email;
+        $employee->password = Hash::make($request->password);
+        $employee->rol_user = $request->rol_user;
+        $employee->save();
         return redirect('employee')->with('success', 'Agregado exitosamente');
     }
 
