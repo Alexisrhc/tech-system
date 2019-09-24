@@ -106,7 +106,7 @@
             </a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link {{ Request::is('seller') || Request::is('seller/create') ? 'active' : '' }}" href="{{ route('seller') }}">
+            <a class="nav-link {{ Request::is('employee') || Request::is('employee/create') ? 'active' : '' }}" href="{{ route('employee') }}">
               <img src="{{ asset('assets/img/svg/seller.svg') }}" width="18px" class="mr-3">
               Empleados
             </a>

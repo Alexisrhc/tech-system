@@ -17,10 +17,15 @@ class SellerController extends Controller
      * @return [Function]  function validator
      */
     private function validation (Request $request, $documents) {
-        if ($documents !== null) {
-            // $unique = Rule::unique('sellers')->ignore($request->document, 'document');
-        } else {
-            $unique = 'unique:users';
+        if (Auth::user()->rol_user == 'admin') {
+            # esto es si el logeado es admin debe hacer el EDIT
+            if ($documents !== null) {
+                $unique = Rule::unique('users')->ignore($request->document, 'document');
+                $password = '';
+            } else {
+                $unique = 'unique:users';
+                $password = 'required';
+            }
         }
         $validator = $request->validate([
             'document' =>  $unique,
@@ -28,7 +33,7 @@ class SellerController extends Controller
             'name' => 'required',
             'lastname' => 'required',
             'email' => 'required|email',
-            'password' => ['required', 'string', 'confirmed']
+            'password' => [$password, 'confirmed']
         ]);
         return $validator;
     }
@@ -40,7 +45,7 @@ class SellerController extends Controller
     public function index()
     {
         $Users = DB::table('users')->paginate(10);
-        return view('seller.index', compact('Users'));
+        return view('employee.index', compact('Users'));
     }
 
     /**
@@ -50,7 +55,7 @@ class SellerController extends Controller
      */
     public function create()
     {
-        return view('seller.create');
+        return view('employee.create');
     }
 
     /**
@@ -71,7 +76,7 @@ class SellerController extends Controller
         $seller->password = Hash::make($request->password);
         $seller->rol_user = $request->rol_user;
         $seller->save();
-        return redirect('seller')->with('success', 'Agregado exitosamente');
+        return redirect('employee')->with('success', 'Agregado exitosamente');
     }
 
     /**
@@ -94,7 +99,12 @@ class SellerController extends Controller
     public function edit($id)
     {
         $seller = DB::table('users')->where('id', $id)->get();
-        return view('seller.edit', compact('seller'));
+        if(count($seller)>0){
+            return view('employee.edit', compact('seller'));
+        }else{
+            abort(419);
+            // return redirect('not-found');
+        }
     }
 
     /**
@@ -106,7 +116,26 @@ class SellerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validation($request, $id);
+        $dataUser = [];
+        if (!empty($request->password)) {
+            $dataUser = [
+                'name'=> $request->name,
+                'lastname'=> $request->lastname,
+                'document'=> $request->document,
+                'code' => $request->code,
+                'password' => Hash::make($request->password),
+            ];
+        } else {
+            $dataUser = [
+                'name'=> $request->name,
+                'lastname'=> $request->lastname,
+                'document'=> $request->document,
+                'code' => $request->code,
+            ];
+        }
+        DB::table('users')->where('id', $id)->update($dataUser);
+        return redirect('employee')->with('success', 'Modificado exitosamente');
     }
 
     /**
@@ -117,6 +146,8 @@ class SellerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('users')->where('id', $id)->delete();
+        //mandar mensaje de succes
+        return redirect('employee')->with('success', 'Eliminado exitosamente');
     }
 }

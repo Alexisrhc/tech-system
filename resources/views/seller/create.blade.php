@@ -8,7 +8,7 @@
         			<h2>{{ ucwords('agregar nuevo Vendedor') }}</h2>
 	    		</div>
 	    		<div class="card-body pt-0 pt-md-4">
-		        	<form  method="POST" action="{{ route('seller.store') }}">
+		        	<form  method="POST" action="{{ route('employee.store') }}">
 						@csrf
 						<div class="row mb-2">
 							<div class="col-4">
@@ -131,7 +131,7 @@
 						<div class="row">
 						<div class="col-12 text-right">
 							<button class="btn btn-success">Agregar</button>
-							<a class="btn btn-danger" href="{{route('seller')}}">Cancelar</a>
+							<a class="btn btn-danger" href="{{route('employee')}}">Cancelar</a>
 						</div>
 						</div>
 					</form>

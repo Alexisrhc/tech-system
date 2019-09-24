@@ -15,8 +15,14 @@ Route::get('/', function () {
     return view('auth.login');
 });
 Auth::routes();
-
-
+Route::middleware(['guest'])->group(function () {
+     Route::get('/login', function(){
+        return view('auth.login');
+     })->name('login');
+    // Route::get('/register', function(){
+    //     return view('auth.login');
+    // })->name('login');
+});
 Route::middleware(['auth'])->group(function () {
     // Home
     Route::get('/home', 'HomeController@index')->name('home');
@@ -27,6 +33,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/product', 'ProductController');
     Route::get('/product', 'ProductController@index')->name('product');
     // Route Seller
-    Route::resource('/seller', 'SellerController');
-    Route::get('/seller', 'SellerController@index')->name('seller');
+    Route::resource('/employee', 'SellerController');
+    Route::get('/employee', 'SellerController@index')->name('employee');
+
+    // Route::get('/register', function(){return view('auth.login');})->name('login');
 });

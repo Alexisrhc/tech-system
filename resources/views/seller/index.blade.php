@@ -3,7 +3,7 @@
 @section('content')
 	<div class="row">
         <div class="col-md-12 text-right">
-        	<a href="{{ route('seller.create') }}" class="btn btn-sm btn-primary">
+        	<a href="{{ route('employee.create') }}" class="btn btn-sm btn-primary">
         		Agregar Empleado
         		<i class="ni ni-fat-add text-primary"></i>
         	</a>
@@ -61,8 +61,8 @@
                         {{ trans('admin.'.$user->rol_user) }}
                       </td>
                       <td>
-                        <form action="{{route('seller.destroy', $user->id)}}" method="POST">
-                          <a href="{{route('seller.edit', $user->id)}}" class="btn btn-primary btn-sm">
+                        <form action="{{route('employee.destroy', $user->id)}}" method="POST">
+                          <a href="{{route('employee.edit', $user->id)}}" class="btn btn-primary btn-sm">
                             <img src="{{ asset('assets/img/svg/ic_create_24px.svg') }}" width="18px">
                           </a>
                           @method('DELETE')
