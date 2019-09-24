@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>
-    Tech-System | Dashboard
+    Technological project - System | Dashboard
   </title>
   <link href="{{ asset('assets/img/brand/favicon.png') }}" rel="icon" type="image/png">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
@@ -62,7 +62,7 @@
         <div class="navbar-collapse-header d-md-none">
           <div class="row">
             <div class="col-6 collapse-brand">
-              <a href="index.html">
+              <a href="{{ route('home') }}">
                 <img src="{{ asset('assets/img/brand/blue.png') }}">
               </a>
             </div>
@@ -89,26 +89,26 @@
         <ul class="navbar-nav">
           <li class="nav-item">
             <a class="nav-link {{ Request::is('home') ? 'active' : '' }}" href="{{ route('home') }}">
-              <i class="ni ni-tv-2 text-primary"></i>
+              <img src="{{ asset('assets/img/svg/home.svg') }}" width="18px" class="mr-3">
               Inicio
             </a>
           </li>
           <li class="nav-item active">
             <a class="nav-link {{ Request::is('client') ? 'active' : '' }}" href="{{ route('client') }}">
-              <i class="ni ni-single-02 text-primary"></i>
-              Cliente
+              <img src="{{ asset('assets/img/svg/client.svg') }}" width="18px" class="mr-3">
+              Clientes
             </a>
           </li>
           <li class="nav-item active">
             <a class="nav-link {{ Request::is('product') ? 'active' : '' }}" href="{{ route('product') }}">
-              <i class="ni ni-building text-primary"></i>
+              <img src="{{ asset('assets/img/svg/layers-3_primary.svg') }}" width="18px" class="mr-3">
               Productos
             </a>
           </li>
           <li class="nav-item active">
             <a class="nav-link {{ Request::is('seller') ? 'active' : '' }}" href="{{ route('seller') }}">
-              <i class="ni ni-single-02 text-primary"></i>
-              Vendedores
+              <img src="{{ asset('assets/img/svg/seller.svg') }}" width="18px" class="mr-3">
+              Empleados
             </a>
           </li>
         </ul>
@@ -119,7 +119,7 @@
     <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
       <div class="container-fluid">
         <!-- Brand -->
-        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="index.html">Inicio</a>
+        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="{{ route('home') }}">Inicio</a>
         <!-- Form -->
         <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
           <div class="form-group mb-0">
@@ -255,22 +255,15 @@
               <a href="http://www.alexisrhc.com.ve" class="font-weight-bold text-muted ml-1" target="_blank">Nodo's Creative</a>
             </div>
           </div>
-          <!-- <div class="col-xl-6">
+          <div class="col-xl-6">
             <ul class="nav nav-footer justify-content-center justify-content-xl-end">
               <li class="nav-item">
-                <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Creative Tim</a>
-              </li>
-              <li class="nav-item">
-                <a href="https://www.creative-tim.com/presentation" class="nav-link" target="_blank">About Us</a>
-              </li>
-              <li class="nav-item">
-                <a href="http://blog.creative-tim.com" class="nav-link" target="_blank">Blog</a>
-              </li>
-              <li class="nav-item">
-                <a href="https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md" class="nav-link" target="_blank">MIT License</a>
+                <a href="{{ route('home') }}" class="nav-link">
+                  <img src="{{ asset('assets/img/brand/blue_best_best.png') }}" width="140px">
+                </a>
               </li>
             </ul>
-          </div> -->
+          </div>
         </div>
       </footer>
     </div>

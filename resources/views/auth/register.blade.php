@@ -47,8 +47,8 @@
         <div class="header-body text-center mb-7">
           <div class="row justify-content-center">
             <div class="col-lg-5 col-md-6">
-              <h1 class="text-white">Register!</h1>
-              <p class="text-lead text-light">Use these awesome forms to login or create new account in your project for free.</p>
+              <h1 class="text-white">Registro</h1>
+              <p class="text-lead text-light">Crea tu cuenta para tener control de todo el sistema.</p>
             </div>
           </div>
         </div>
@@ -63,10 +63,10 @@
       <div class="row justify-content-center">
         <div class="col-lg-5 col-md-7">
           <div class="card bg-secondary shadow border-0">
-            
+
             <div class="card-body px-lg-5 py-lg-5">
               <div class="text-center text-muted mb-4">
-                <small>Or sign in with credentials</small>
+                <img src="../assets/img/brand/blue.png" width="300px"><br>
               </div>
               <form method="POST" action="{{ route('register') }}">
                 @csrf
@@ -79,7 +79,7 @@
                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Email">
 
                     @error('email')
-                        <span class="invalid-feedback" role="alert">
+                        <span class="invalid-feedback text-center" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
@@ -95,13 +95,48 @@
                     <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Name">
 
                     @error('name')
-                        <span class="invalid-feedback" role="alert">
+                        <span class="invalid-feedback text-center" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
                   </div>
                 </div>
-                
+
+                <!--LAST_NAME-->
+                <div class="form-group mb-3">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-single-02"></i></span>
+                    </div>
+                    <input id="lastname" type="text" class="form-control @error('lastname') is-invalid @enderror" name="lastname" value="{{ old('lastname') }}"  placeholder="Apellido">
+
+                    @error('lastname')
+                        <span class="invalid-feedback text-center" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                  </div>
+                </div>
+
+                <!--ROL-->
+                <div class="form-group mb-3">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-single-02"></i></span>
+                    </div>
+                    <select type="text" class="form-control @error('rol_user') is-invalid @enderror" name="rol_user" value="{{ old('rol_user') }}" >
+                      <option value="admin">ADMINISTRADOR</option>
+                      <option value="employee">EMPLEADO</option> seller es vendedor
+                    </select>
+
+                    @error('lastname')
+                        <span class="invalid-feedback text-center" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                  </div>
+                </div>
+
                 <!--PASSWORD-->
                 <div class="form-group">
                   <div class="input-group input-group-alternative">
@@ -111,7 +146,7 @@
                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Password">
 
                     @error('password')
-                        <span class="invalid-feedback" role="alert">
+                        <span class="invalid-feedback text-center" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
@@ -127,7 +162,7 @@
                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Password Confirm">
                   </div>
                 </div>
-                
+
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary">
                         {{ __('Register') }}
@@ -152,7 +187,7 @@
             </div>
           </div>
           <div class="col-xl-6">
-            
+
           </div>
         </div>
       </div>

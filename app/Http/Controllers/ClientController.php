@@ -20,13 +20,15 @@ class ClientController extends Controller
         if ($documents !== null) {
             $unique = Rule::unique('clients')->ignore($request->document, 'document');
         } else {
-            $unique = 'unique:clients';
+            $unique = 'unique:clients|required';
         }
         $validator = $request->validate([
             'document' =>  $unique,
             'name' => 'required',
             'lastname' => 'required',
-            'email' => 'required'
+            'email' => 'required',
+            'phone' => 'required',
+            'address' => 'required'
         ]);
         return $validator;
     }

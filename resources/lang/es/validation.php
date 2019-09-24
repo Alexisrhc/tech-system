@@ -153,6 +153,8 @@ return [
         'email'                 => 'correo electrónico',
         'first_name'            => 'nombre',
         'last_name'             => 'apellido',
+        'lastname'              => 'apellido',
+        'document'              => 'Cedula de Identidad',
         'password'              => 'contraseña',
         'password_confirmation' => 'confirmación de la contraseña',
         'city'                  => 'ciudad',
@@ -179,5 +181,7 @@ return [
         'subject'               => 'asunto',
         'message'               => 'mensaje',
         'price'                 => 'precio',
+        'code'                  => 'código',
+        'model'                 => 'modelo',
     ],
 ];

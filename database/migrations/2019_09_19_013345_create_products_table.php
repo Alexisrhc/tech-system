@@ -17,6 +17,7 @@ class CreateProductsTable extends Migration
             $table->bigIncrements('id_product');
             $table->string('code');
             $table->string('serial');
+            $table->string('model');
             $table->string('name');
             $table->string('description');
             $table->string('quantity');

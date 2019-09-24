@@ -66,6 +66,7 @@
 
             <div class="card-body px-lg-5 py-lg-5">
               <div class="text-center text-muted mb-4">
+                <img src="../assets/img/brand/blue.png" width="300px"><br>
                 <small>Inicie con sus credenciales</small>
               </div>
               <form method="POST" action="{{ route('login') }}">

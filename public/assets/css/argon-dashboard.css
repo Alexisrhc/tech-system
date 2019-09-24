@@ -191,7 +191,7 @@ sup {
 }
 
 a {
-  color: #5e72e4;
+  color: #009BDB;
   text-decoration: none;
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
@@ -2289,7 +2289,7 @@ textarea.form-control {
   width: 100%;
   margin-top: 0.25rem;
   font-size: 80%;
-  color: #fb6340;
+  color: #009BDB;
 }
 
 .invalid-tooltip {
@@ -2520,15 +2520,15 @@ fieldset:disabled a.btn {
 
 .btn-primary {
   color: #fff;
-  background-color: #5e72e4;
-  border-color: #5e72e4;
+  background-color: #009BDB;
+  /*border-color: #5e72e4;*/
   box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .btn-primary:hover {
   color: #fff;
-  background-color: #5e72e4;
-  border-color: #5e72e4;
+  background-color: #009BDB;
+  border-color: #002C59;
 }
 
 .btn-primary:focus,
@@ -3444,7 +3444,7 @@ fieldset:disabled a.btn {
 
 .btn-link {
   font-weight: 400;
-  color: #5e72e4;
+  color: #002C59;
   background-color: transparent;
 }
 

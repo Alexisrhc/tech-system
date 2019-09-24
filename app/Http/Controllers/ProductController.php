@@ -20,11 +20,13 @@ class ProductController extends Controller
         if ($code !== null) {
             $unique = Rule::unique('products')->ignore($request->code, 'code');
         } else {
-            $unique = 'unique:products';
+            $unique = 'unique:products|required';
         }
         $validator = $request->validate([
             'code' =>  $unique,
             'serial' => 'required',
+            'name' => 'required',
+            'model' => 'required',
         ]);
         return $validator;
     }

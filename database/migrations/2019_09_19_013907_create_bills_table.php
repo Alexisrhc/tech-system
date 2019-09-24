@@ -17,13 +17,11 @@ class CreateBillsTable extends Migration
             $table->bigIncrements('id_bill');
             $table->string('date');
             $table->unsignedBigInteger('id_client');
-            $table->unsignedBigInteger('id_seller');
             $table->unsignedBigInteger('id_product');
             $table->timestamps();
 
 
             $table->foreign('id_client')->references('id_client')->on('clients');
-            $table->foreign('id_seller')->references('id_seller')->on('sellers');
             $table->foreign('id_product')->references('id_product')->on('products');
         });
     }

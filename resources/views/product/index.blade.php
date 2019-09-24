@@ -3,9 +3,9 @@
 @section('content')
     <div class="row">
         <div class="col-md-12 text-right">
-        	<a href="{{ route('product.create') }}" class="btn btn-sm btn-success">
+        	<a href="{{ route('product.create') }}" class="btn btn-sm btn-primary">
         		Agregar Producto
-        		<i class="ni ni-fat-add text-yellow"></i>
+            <img src="{{ asset('assets/img/svg/layers-3.svg') }}" width="18px" class="ml-2 mr-2">
         	</a>
         </div>
     </div>
@@ -62,12 +62,15 @@
                       </td>
                       <td>
                         <form action="{{route('product.destroy', $product->id_product)}}" method="POST">
-                          <a href="{{route('product.edit', $product->id_product)}}" class="btn btn-success btn-sm">
-                            <i class="ni ni-ruler-pencil"></i>
+                          <a href="{{route('product.edit', $product->id_product)}}" class="btn btn-primary btn-sm">
+                            <img src="{{ asset('assets/img/svg/ic_create_24px.svg') }}" width="18px">
                           </a>
                           @method('DELETE')
                           @csrf
-                          <button class="btn btn-danger btn-sm"><i class="ni ni-fat-remove"></i></button>
+                          <button class="btn btn-danger btn-sm">
+                            {{-- <i class="ni ni-fat-remove"></i> --}}
+                            <img src="{{ asset('assets/img/svg/trash-simple.svg') }}" width="18px">
+                          </button>
                         </form>
                       </td>
                     </tr>
