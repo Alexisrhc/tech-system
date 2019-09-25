@@ -24,7 +24,7 @@
 											<option value="J-">J-</option>
 										</select>
 									</div>
-									<input type="text" class="form-control @error('document') is-invalid @enderror" name="document" value="{{ old('document') }}" placeholder="00000000">
+									<input style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" type="text" class="form-control @error('document') is-invalid @enderror" name="document" value="{{ old('document') }}" placeholder="00000000">
 
 									@error('document')
 										<span class="invalid-feedback text-center" role="alert">
@@ -39,7 +39,7 @@
 									<div class="input-group-prepend">
 										<span class="input-group-text"><i class="ni ni-single-02 text-primary"></i></span>
 									</div>
-									<input id="name"
+									<input style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" id="name"
 									type="text" class="form-control @error('name') is-invalid @enderror"
 									name="name"
 									value="{{ old('name') }}"
@@ -58,7 +58,7 @@
 									<div class="input-group-prepend">
 										<span class="input-group-text"><i class="ni ni-single-02 text-primary"></i></span>
 									</div>
-									<input id="lastname"
+									<input style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" id="lastname"
 									type="text" class="form-control @error('lastname') is-invalid @enderror"
 									name="lastname"
 									value="{{ old('lastname') }}"
@@ -79,7 +79,7 @@
 									<div class="input-group-prepend">
 										<span class="input-group-text"><i class="ni ni-email-83 text-primary"></i></span>
 									</div>
-									<input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Correo Electronico">
+									<input style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Correo Electronico">
 									@error('email')
 										<span class="invalid-feedback text-center" role="alert">
 											<strong>{{ $message }}</strong>
@@ -93,7 +93,7 @@
 									<div class="input-group-prepend">
 										<span class="input-group-text"><i class="ni ni-mobile-button text-primary"></i></span>
 									</div>
-									<input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" placeholder="Numero de telefono">
+									<input style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" id="phone" type="num" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" placeholder="Numero de telefono">
 									@error('phone')
 										<span class="invalid-feedback text-center" role="alert">
 											<strong>{{ $message }}</strong>
@@ -109,7 +109,7 @@
 									<div class="input-group-prepend">
 										<span class="input-group-text"><i class="ni ni-square-pin text-primary"></i></span>
 									</div>
-									<textarea id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" placeholder="Dirección"></textarea>
+									<textarea style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" placeholder="Dirección"></textarea>
 									@error('address')
 										<span class="invalid-feedback text-center" role="alert">
 											<strong>{{ $message }}</strong>
