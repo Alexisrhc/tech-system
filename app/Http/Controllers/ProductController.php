@@ -18,15 +18,13 @@ class ProductController extends Controller
      */
     private function validation (Request $request, $code) {
         if ($code !== null) {
-            $unique = Rule::unique('products')->ignore($request->code, 'code');
+            $unique = Rule::unique('products')->ignore($request->id_product, 'id_product');
         } else {
             $unique = 'unique:products|required';
         }
         $validator = $request->validate([
-            'code' =>  $unique,
-            'serial' => 'required',
+            'serial_product' => 'required',
             'name' => 'required',
-            'model' => 'required',
         ]);
         return $validator;
     }
@@ -38,7 +36,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = DB::table('products')->paginate(10);
-        return view('product.index', ['products' => $products]);
+        return view('product.index', compact('products'));
     }
 
     /**
@@ -62,8 +60,9 @@ class ProductController extends Controller
         // Validate the request...
         $this->validation($request, null);
         $product = new Product;
-        $product->code = $request->code;
-        $product->serial = $request->serial;
+        $product->serial_product = $request->serial_product;
+        $product->smart_card = $request->smart_card;
+        $product->model = $request->model;
         $product->name = $request->name;
         $product->description = $request->description;
         $product->quantity = $request->quantity;
@@ -106,12 +105,13 @@ class ProductController extends Controller
     {
         $this->validation($request, $id);
          DB::table('products')->where('id_product', $id)->update([
-            'code' => $request->code,
-            'serial' => $request->serial,
+            'serial_product' => $request->serial_product,
+            'smart_card' => $request->smart_card,
+            'model'=> $request->model,
             'name'=> $request->name,
             'description'=> $request->description,
             'quantity'=> $request->quantity,
-            'price'=> $request->price
+            'price'=> $request->price,
         ]);
         return redirect('product')->with('success', 'Modificado exitosamente');
     }
@@ -125,7 +125,6 @@ class ProductController extends Controller
     public function destroy($id)
     {
         DB::table('products')->where('id_product', $id)->delete();
-        //mandar mensaje de succes
         return redirect('product')->with('success', 'Eliminado exitosamente');
     }
 }

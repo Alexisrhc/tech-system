@@ -64,7 +64,7 @@ class ClientController extends Controller
         // Validate the request...
         $this->validation($request, null);
         $client = new Client;
-        $client->document = $request->document;
+        $client->document = $request->type_document.$request->document;
         $client->name = $request->name;
         $client->lastname = $request->lastname;
         $client->email = $request->email;

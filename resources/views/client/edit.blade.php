@@ -13,6 +13,7 @@
 						@csrf
 						<div class="row mb-2">
 							<div class="col-4">
+								<label for="type_document" class="col-form-label-sm">{{ ucwords('documento de identidad:') }}</label>
 								<div class="input-group input-group-alternative">
 									<div class="input-group-prepend">
 										<span class="input-group-text"><i class="text-primary ni ni-badge"></i></span>
@@ -27,6 +28,7 @@
 								</div>
 							</div>
 							<div class="col-4">
+								<label for="name" class="col-form-label-sm">{{ ucwords('nombre:') }}</label>
 								<div class="input-group input-group-alternative">
 									<div class="input-group-prepend">
 										<span class="input-group-text"><i class="text-primary ni ni-single-02"></i></span>
@@ -41,6 +43,7 @@
 								</div>
 							</div>
 							<div class="col-4">
+								<label for="lastname" class="col-form-label-sm">{{ ucwords('apellido:') }}</label>
 								<div class="input-group input-group-alternative">
 									<div class="input-group-prepend">
 										<span class="input-group-text"><i class="text-primary ni ni-single-02"></i></span>
@@ -57,6 +60,7 @@
 							</div>
 							<div class="row mb-2">
 								<div class="col-6">
+								<label for="email" class="col-form-label-sm">{{ ucwords('correo electrónico:') }}</label>
 								<div class="input-group input-group-alternative">
 									<div class="input-group-prepend">
 										<span class="input-group-text"><i class="text-primary ni ni-email-83"></i></span>
@@ -70,6 +74,7 @@
 								</div>
 							</div>
 							<div class="col-6">
+								<label for="phone" class="col-form-label-sm">{{ ucwords('número de telefono:') }}</label>
 								<div class="input-group input-group-alternative">
 									<div class="input-group-prepend">
 										<span class="input-group-text"><i class="text-primary ni ni-mobile-button"></i></span>
@@ -85,6 +90,7 @@
 							</div>
 							<div class="row mb-2">
 							<div class="col-12">
+								<label for="address" class="col-form-label-sm">{{ ucwords('dirección:') }}</label>
 								<div class="input-group input-group-alternative">
 									<div class="input-group-prepend">
 										<span class="input-group-text"><i class="text-primary ni ni-square-pin"></i></span>

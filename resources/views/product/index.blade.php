@@ -30,12 +30,12 @@
               <table class="table align-items-center table-flush">
                 <thead class="thead-light">
                   <tr>
-                    <th scope="col">Codigo</th>
-                    <th scope="col">Serial</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Descripción</th>
-                    <th scope="col">Cantidad</th>
-                    <th scope="col">Precio</th>
+                    <th scope="col"> {{ ucwords('serial producto')}} </th>
+                    <th scope="col"> {{ ucwords('smart card')}} </th>
+                    <th scope="col"> {{ ucwords('nombre')}} </th>
+                    <th scope="col"> {{ ucwords('descripción')}} </th>
+                    <th scope="col"> {{ ucwords('cantidad')}} </th>
+                    <th scope="col"> {{ ucwords('precio')}} </th>
                     <th>Acción</th>
                   </tr>
                 </thead>
@@ -43,16 +43,16 @@
                   @foreach ($products as $product)
                     <tr>
                       <td>
-                        {{$product->code}}
+                        {{$product->serial_product}}
                       </td>
                       <td>
-                        {{ ucwords($product->serial)}}
+                        {{ ucwords($product->smart_card)}}
                       </td>
                       <td>
                         {{ucwords(ucwords($product->name))}}
                       </td>
                       <td>
-                        {{substr($product->description, 0, 30)}}
+                        {{substr($product->description, 0, 25)}}
                       </td>
                       <td>
                         {{$product->quantity}}

@@ -12,11 +12,19 @@
 						@csrf
 						<div class="row mb-2">
 							<div class="col-4">
+								<label for="type_document" class="col-form-label-sm">{{ ucwords('documento de identidad:') }}</label>
 								<div class="input-group input-group-alternative">
 									<div class="input-group-prepend">
 										<span class="input-group-text"><i class="ni ni-badge text-primary"> </i></span>
 									</div>
-									<input type="text" class="form-control @error('document') is-invalid @enderror" name="document" value="{{ old('document') }}" placeholder="V-00000000">
+									<div class="input-group-prepend sm">
+										<select class="form-control" name="type_document" id="type_document">
+											<option selected value="V-">V-</option>
+											<option value="E-">E-</option>
+											<option value="J-">J-</option>
+										</select>
+									</div>
+									<input type="text" class="form-control @error('document') is-invalid @enderror" name="document" value="{{ old('document') }}" placeholder="00000000">
 
 									@error('document')
 										<span class="invalid-feedback text-center" role="alert">
@@ -26,6 +34,7 @@
 								</div>
 							</div>
 							<div class="col-4">
+								<label for="type_document" class="col-form-label-sm">{{ ucwords('nombre:') }}</label>
 								<div class="input-group input-group-alternative">
 									<div class="input-group-prepend">
 										<span class="input-group-text"><i class="ni ni-single-02 text-primary"></i></span>
@@ -44,6 +53,7 @@
 								</div>
 							</div>
 							<div class="col-4">
+								<label for="lastname" class="col-form-label-sm">{{ ucwords('apellido:') }}</label>
 								<div class="input-group input-group-alternative">
 									<div class="input-group-prepend">
 										<span class="input-group-text"><i class="ni ni-single-02 text-primary"></i></span>
@@ -64,6 +74,7 @@
 							</div>
 							<div class="row mb-2">
 								<div class="col-6">
+								<label for="email" class="col-form-label-sm">{{ ucwords('correo electrónico:') }}</label>
 								<div class="input-group input-group-alternative">
 									<div class="input-group-prepend">
 										<span class="input-group-text"><i class="ni ni-email-83 text-primary"></i></span>
@@ -77,6 +88,7 @@
 								</div>
 							</div>
 							<div class="col-6">
+								<label for="phone" class="col-form-label-sm">{{ ucwords('número de telefono:') }}</label>
 								<div class="input-group input-group-alternative">
 									<div class="input-group-prepend">
 										<span class="input-group-text"><i class="ni ni-mobile-button text-primary"></i></span>
@@ -92,6 +104,7 @@
 							</div>
 							<div class="row mb-2">
 							<div class="col-12">
+								<label for="address" class="col-form-label-sm">{{ ucwords('dirección:') }}</label>
 								<div class="input-group input-group-alternative">
 									<div class="input-group-prepend">
 										<span class="input-group-text"><i class="ni ni-square-pin text-primary"></i></span>

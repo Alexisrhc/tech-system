@@ -183,5 +183,8 @@ return [
         'price'                 => 'precio',
         'code'                  => 'código',
         'model'                 => 'modelo',
+        'serial_product'        => 'serial producto',
+
+
     ],
 ];

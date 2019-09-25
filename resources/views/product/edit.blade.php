@@ -13,13 +13,13 @@
 						@csrf
 						<div class="row mb-2">
 							<div class="col-4">
+								<label class="col-form-label-sm" for="serial_product">{{ ucwords('serial producto:') }}</label>
 								<div class="input-group input-group-alternative">
 									<div class="input-group-prepend">
-										<span class="input-group-text"><i class="ni ni-badge"></i></span>
+										<img src="{{ asset('assets/img/svg/box_product.svg') }}" width="24px" class="ml-3 mr-2 mt-2 mb-2">
 									</div>
-									<input type="text" value="{{$product[0]->code}}" class="form-control @error('code') is-invalid @enderror" name="code" value="{{ old('email') }}" required placeholder="Codigo">
-
-									@error('code')
+									<input type="text" value="{{$product[0]->serial_product}}" class="form-control @error('serial_product') is-invalid @enderror" name="serial_product" value="{{ old('email') }}">
+									@error('serial_product')
 										<span class="invalid-feedback" role="alert">
 											<strong>{{ $message }}</strong>
 										</span>
@@ -27,13 +27,13 @@
 								</div>
 							</div>
 							<div class="col-4">
+								<label class="col-form-label-sm" for="smart_card">{{ ucwords('smart card:') }}</label>
 								<div class="input-group input-group-alternative">
 									<div class="input-group-prepend">
-										<span class="input-group-text"><i class="ni ni-single-02"></i></span>
+										<img src="{{ asset('assets/img/svg/box_product.svg') }}" width="24px" class="ml-3 mr-2 mt-2 mb-2">
 									</div>
-									<input id="serial" value="{{$product[0]->serial}}" type="text" class="form-control @error('serial') is-invalid @enderror" name="serial" value="{{ old('serial') }}" placeholder="Serial">
-
-									@error('serial')
+									<input id="smart_card" value="{{$product[0]->smart_card}}" type="text" class="form-control @error('smart_card') is-invalid @enderror" name="smart_card" value="{{ old('smart_card') }}" >
+									@error('smart_card')
 										<span class="invalid-feedback" role="alert">
 											<strong>{{ $message }}</strong>
 										</span>
@@ -41,62 +41,82 @@
 								</div>
 							</div>
 							<div class="col-4">
+								<label class="col-form-label-sm" for="model">{{ ucwords('modelo:') }}</label>
 								<div class="input-group input-group-alternative">
 									<div class="input-group-prepend">
-										<span class="input-group-text"><i class="ni ni-single-02"></i></span>
+										<img src="{{ asset('assets/img/svg/box_product.svg') }}" width="24px" class="ml-3 mr-2 mt-2 mb-2">
 									</div>
-									<input id="name" value="{{$product[0]->name}}" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="Nombre del producto">
+									<input id="model" value="{{$product[0]->model}}" type="text" class="form-control @error('model') is-invalid @enderror" name="model" value="{{ old('model') }}" placeholder="Nombre del producto">
 
-									@error('name')
+									@error('model')
 										<span class="invalid-feedback" role="alert">
 											<strong>{{ $message }}</strong>
 										</span>
 									@enderror
 								</div>
 							</div>
+						</div>
+							<div class="row mb-2">
+								<div class="col-4">
+									<label class="col-form-label-sm" for="name">{{ ucwords('nombre:') }}</label>
+									<div class="input-group input-group-alternative">
+										<div class="input-group-prepend">
+											<img src="{{ asset('assets/img/svg/box_product.svg') }}" width="24px" class="ml-3 mr-2 mt-2 mb-2">
+										</div>
+										<input id="name" value="{{$product[0]->name}}" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="Nombre del producto">
+
+										@error('name')
+											<span class="invalid-feedback" role="alert">
+												<strong>{{ $message }}</strong>
+											</span>
+										@enderror
+									</div>
+								</div>
+
+								<div class="col-4">
+									<label class="col-form-label-sm" for="quantity">{{ ucwords('cantidad:') }}</label>
+									<div class="input-group input-group-alternative">
+										<div class="input-group-prepend">
+											<img src="{{ asset('assets/img/svg/layers-3_primary.svg') }}" width="18px" class="ml-2 mr-2">
+										</div>
+										<input id="quantity" type="text" value="{{$product[0]->quantity}}" class="form-control @error('quantity') is-invalid @enderror" name="quantity" value="{{ old('quantity') }}" placeholder="Cantidad">
+										@error('quantity')
+											<span class="invalid-feedback" role="alert">
+												<strong>{{ $message }}</strong>
+											</span>
+										@enderror
+										</div>
+									</div>
+								<div class="col-4">
+									<label class="col-form-label-sm" for="price">{{ ucwords('precio:') }}</label>
+									<div class="input-group input-group-alternative">
+										<div class="input-group-prepend">
+											<img src="{{ asset('assets/img/svg/dollar.svg') }}" width="20px" class="ml-3 mr-2 mt-2 mb-2">
+										</div>
+										<input id="price" type="text" value="{{$product[0]->price}}" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}" placeholder="Precio">
+										@error('price')
+											<span class="invalid-feedback" role="alert">
+												<strong>{{ $message }}</strong>
+											</span>
+										@enderror
+									</div>
+								</div>
 							</div>
 							<div class="row mb-2">
-								<div class="col-6">
-								<div class="input-group input-group-alternative">
-									<div class="input-group-prepend">
-										<span class="input-group-text"><i class="ni ni-email-83"></i></span>
-									</div>
-									<input id="description" type="description" value="{{$product[0]->description}}" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('description') }}" placeholder="Descripción">
-									@error('description')
-										<span class="invalid-feedback" role="alert">
-											<strong>{{ $message }}</strong>
-										</span>
-									@enderror
-								</div>
-							</div>
-							<div class="col-6">
-								<div class="input-group input-group-alternative">
-									<div class="input-group-prepend">
-										<span class="input-group-text"><i class="ni ni-mobile-button"></i></span>
-									</div>
-									<input id="quantity" type="text" value="{{$product[0]->quantity}}" class="form-control @error('quantity') is-invalid @enderror" name="quantity" value="{{ old('quantity') }}" placeholder="Cantidad">
-									@error('quantity')
-										<span class="invalid-feedback" role="alert">
-											<strong>{{ $message }}</strong>
-										</span>
-									@enderror
+								<div class="col-12">
+									<label class="col-form-label-sm" for="description">{{ ucwords('descrición:') }}</label>
+									<div class="input-group input-group-alternative">
+										<div class="input-group-prepend">
+											<img src="{{ asset('assets/img/svg/box_product.svg') }}" width="24px" class="ml-3 mr-2 mt-2 mb-2">
+										</div>
+										<input id="description" type="description" value="{{$product[0]->description}}" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('description') }}" placeholder="Descripción">
+										@error('description')
+											<span class="invalid-feedback" role="alert">
+												<strong>{{ $message }}</strong>
+											</span>
+										@enderror
 									</div>
 								</div>
-							</div>
-							<div class="row mb-2">
-							<div class="col-12">
-								<div class="input-group input-group-alternative">
-									<div class="input-group-prepend">
-										<span class="input-group-text"><i class="ni ni-square-pin"></i></span>
-									</div>
-									<input id="price" type="text" value="{{$product[0]->price}}" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}" placeholder="Precio">
-									@error('price')
-										<span class="invalid-feedback" role="alert">
-											<strong>{{ $message }}</strong>
-										</span>
-									@enderror
-								</div>
-							</div>
 							</div>
 						<div class="row">
 							<div class="col-12 text-right">
