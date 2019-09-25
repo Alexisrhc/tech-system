@@ -114,8 +114,8 @@
 
 						<div class="row">
 							<div class="col-12 text-right">
-								<button class="btn btn-success">Guardar</button>
-								<a class="btn btn-danger" href="{{route('employee')}}">Cancelar</a>
+								<button class="btn btn-success btn-sm">Guardar</button>
+								<a class="btn btn-danger btn-sm" href="{{route('employee')}}">Cancelar</a>
 							</div>
 						</div>
 					</form>

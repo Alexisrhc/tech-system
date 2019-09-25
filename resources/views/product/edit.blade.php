@@ -120,8 +120,8 @@
 							</div>
 						<div class="row">
 							<div class="col-12 text-right">
-								<button class="btn btn-success">Guardar</button>
-								<a class="btn btn-danger" href="{{route('product')}}">Cancelar</a>
+								<button class="btn btn-success btn-sm">Guardar</button>
+								<a class="btn btn-danger btn-sm" href="{{route('product')}}">Cancelar</a>
 							</div>
 						</div>
 					</form>
