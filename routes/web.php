@@ -11,14 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-});
 Auth::routes();
+
 Route::middleware(['guest'])->group(function () {
-     Route::get('/login', function(){
-        return view('auth.login');
-     })->name('login');
+    Route::get('/', function () {return view('auth.login');});
+    Route::get('/login', function(){return view('auth.login');})->name('login');
     // Route::get('/register', function(){
     //     return view('auth.login');
     // })->name('login');
@@ -40,5 +37,5 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/provider', 'ProviderController');
     Route::get('/provider', 'ProviderController@index')->name('provider');
 
-    // Route::get('/register', function(){return view('auth.login');})->name('login');
+    // Route::get('/register', function(){return view('auth.login');})->name('register');
 });
