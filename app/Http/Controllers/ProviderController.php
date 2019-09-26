@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\provider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
 
 class ProviderController extends Controller
 {
@@ -110,7 +111,7 @@ class ProviderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validation($request, null);
+        $this->validation($request, $id);
          DB::table('providers')->where('id_provider', $id)->update([
             'rif' => $request->rif,
             'business_name' => $request->business_name,
