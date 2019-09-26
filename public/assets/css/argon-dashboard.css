@@ -103,6 +103,8 @@ hr {
   box-sizing: content-box;
   height: 0;
   overflow: visible;
+  border: 0;
+  border-top: 1px solid rgba(243, 13, 13, 1);
 }
 
 h1,

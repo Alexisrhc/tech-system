@@ -93,22 +93,32 @@
               Inicio
             </a>
           </li>
-          <li class="nav-item active">
+          <li class="nav-item ">
             <a class="nav-link {{ Request::is('client') || Request::is('client/create') ? 'active' : '' }}" href="{{ route('client') }}">
               <img src="{{ asset('assets/img/svg/client.svg') }}" width="18px" class="mr-3">
               Clientes
             </a>
           </li>
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link {{ Request::is('product') || Request::is('product/create') ? 'active' : '' }}" href="{{ route('product') }}">
               <img src="{{ asset('assets/img/svg/layers-3_primary.svg') }}" width="18px" class="mr-3">
               Productos
             </a>
           </li>
-          <li class="nav-item active">
+        </ul>
+        <hr class="my-3">
+        <ul class="navbar-nav">
+          <li class="nav-item">
             <a class="nav-link {{ Request::is('employee') || Request::is('employee/create') ? 'active' : '' }}" href="{{ route('employee') }}">
               <img src="{{ asset('assets/img/svg/seller.svg') }}" width="18px" class="mr-3">
               Empleados
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link {{ Request::is('provider') || Request::is('provider/create') ? 'active' : '' }}" href="{{ route('provider') }}">
+              <img src="{{ asset('assets/img/svg/seller.svg') }}" width="18px" class="mr-3">
+              Proveedores
             </a>
           </li>
         </ul>

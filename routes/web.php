@@ -32,9 +32,13 @@ Route::middleware(['auth'])->group(function () {
     // Route Products
     Route::resource('/product', 'ProductController');
     Route::get('/product', 'ProductController@index')->name('product');
-    // Route Seller
+    // Route employee
     Route::resource('/employee', 'SellerController');
     Route::get('/employee', 'SellerController@index')->name('employee');
+
+    // Route provider
+    Route::resource('/provider', 'ProviderController');
+    Route::get('/provider', 'ProviderController@index')->name('provider');
 
     // Route::get('/register', function(){return view('auth.login');})->name('login');
 });
