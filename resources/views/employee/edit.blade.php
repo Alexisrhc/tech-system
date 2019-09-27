@@ -89,10 +89,10 @@
 											type="text"
 											class="form-control @error('rol_user') is-invalid @enderror"
 											name="rol_user" >
-												<option selected disabled hidden value="{{ $seller[0]->rol_user }}">{{ trans('admin.'.$seller[0]->rol_user) }}</option>
-							                    <option value="employee">EMPLEADO</option>
-							                    <option value="technical">TECNICO</option>
-							                    <option value="admin">ADMINISTRADOR</option>
+												<option hidden>{{ trans('admin.'.$seller[0]->rol_user) }}</option>
+							                    <option value="employee">{{ trans('admin.'.'employee') }}</option>
+							                    <option value="technical">{{ trans('admin.'.'technical') }}</option>
+							                    <option value="admin">{{ trans('admin.'.'admin') }}</option>
 						                    </select>
 
 											@error('type_seller')
