@@ -29,7 +29,7 @@ class SellerController extends Controller
         // }
         $validator = $request->validate([
             'document' =>  $unique,
-            'code' =>  $unique,
+            // 'code' =>  $unique,
             'name' => 'required',
             'lastname' => 'required',
             'email' => 'required|email',
@@ -124,6 +124,7 @@ class SellerController extends Controller
                 'lastname'=> $request->lastname,
                 'document'=> $request->document,
                 'code' => $request->code,
+                'rol_user' => $request->rol_user,
                 'password' => Hash::make($request->password),
             ];
         } else {
@@ -132,6 +133,7 @@ class SellerController extends Controller
                 'lastname'=> $request->lastname,
                 'document'=> $request->document,
                 'code' => $request->code,
+                'rol_user' => $request->rol_user,
             ];
         }
         DB::table('users')->where('id', $id)->update($dataUser);
