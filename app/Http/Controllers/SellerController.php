@@ -23,7 +23,7 @@ class SellerController extends Controller
                 $unique = Rule::unique('users')->ignore($request->document, 'document');
                 $password = '';
             } else {
-                $unique = 'unique:users';
+                $unique = 'unique:users|required';
                 $password = 'required';
             }
         // }
