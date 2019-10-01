@@ -23,6 +23,7 @@ class ProductController extends Controller
             $unique = 'unique:products|required';
         }
         $validator = $request->validate([
+            'code_product' => $unique,
             'serial_product' => 'required',
             'name' => 'required',
         ]);
@@ -39,6 +40,10 @@ class ProductController extends Controller
         return view('product.index', compact('products'));
     }
 
+    public function listProduct () {
+        $products = DB::table('products')->get();
+        return response()->json($products, 200);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -61,6 +66,7 @@ class ProductController extends Controller
         $this->validation($request, null);
         $product = new Product;
         $product->serial_product = $request->serial_product;
+        $product->code_product = $request->code_product;
         $product->smart_card = $request->smart_card;
         $product->model = $request->model;
         $product->name = $request->name;
@@ -105,6 +111,7 @@ class ProductController extends Controller
     {
         $this->validation($request, $id);
          DB::table('products')->where('id_product', $id)->update([
+            'code_product' => $request->code_product,
             'serial_product' => $request->serial_product,
             'smart_card' => $request->smart_card,
             'model'=> $request->model,

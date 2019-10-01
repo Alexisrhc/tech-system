@@ -49,7 +49,6 @@
                   <i class="ni ni-user-run"></i>
                 {{ __('Logout') }}
             </a>
-
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
             </form>
@@ -130,8 +129,8 @@
       <div class="container-fluid">
         <!-- Brand -->
         <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="{{ route('home') }}">Inicio</a>
-        <!-- Form -->
-        <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
+        <!-- Form de buscar -->
+        {{-- <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
           <div class="form-group mb-0">
             <div class="input-group input-group-alternative">
               <div class="input-group-prepend">
@@ -140,7 +139,7 @@
               <input class="form-control" placeholder="Buscar" type="text">
             </div>
           </div>
-        </form>
+        </form> --}}
         <!-- User -->
         <ul class="navbar-nav align-items-center d-none d-md-flex">
           <li class="nav-item dropdown">
@@ -294,4 +293,5 @@
         application: "argon-dashboard-free"
       });
   </script>
+    @yield('script')
 </body>

@@ -82,7 +82,8 @@ class ClientController extends Controller
      */
     public function show($id)
     {
-        //
+        $client = DB::table('clients')->where('document', $id)->get();
+        return response()->json($client, 200);
     }
 
     /**

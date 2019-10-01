@@ -14,6 +14,29 @@
 							<div class="col-12">
 								<div class="form-group row">
 									<label for="business_name" class="col-sm-3 col-form-label col-form-label-sm">
+										{{ ucwords('códido producto:') }}
+									</label>
+									<div class="col-sm-9">
+										<div class="input-group input-group-alternative">
+											<span class="input-group-text">
+												<img src="{{ asset('assets/img/svg/code.svg') }}" width="18px" class="ml-2 mr-2">
+											</span>
+											<input style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" id="code_product" type="text" class="form-control @error('code_product') is-invalid @enderror" name="code_product" value="{{ old('code_product') }}"  placeholder="{{ ucwords('código producto') }}">
+
+											@error('code_product')
+												<span class="invalid-feedback text-center" role="alert">
+													<strong>{{ $message }}</strong>
+												</span>
+											@enderror
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row mb-2">
+							<div class="col-12">
+								<div class="form-group row">
+									<label for="business_name" class="col-sm-3 col-form-label col-form-label-sm">
 										{{ ucwords('serial producto:') }}
 									</label>
 									<div class="col-sm-9">
