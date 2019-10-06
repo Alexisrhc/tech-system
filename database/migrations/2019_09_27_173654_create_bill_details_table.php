@@ -20,7 +20,7 @@ class CreateBillDetailsTable extends Migration
             $table->unsignedBigInteger('id_product');
             $table->foreign('id_product')->references('id_product')->on('products');
             $table->string('quantity');
-            $table->string('description');
+            $table->string('price_total');
             $table->timestamps();
 
             /*id_bills: [

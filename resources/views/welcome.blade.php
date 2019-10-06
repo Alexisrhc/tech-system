@@ -22,7 +22,7 @@
 									<option value="J-">J-</option>
 								</select>
 		            		</div>
-		            		<input style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" type="text" class="text-center form-control @error('document') is-invalid @enderror form-control-sm" id="document" name="document" value="{{ old('document') }}" placeholder="00000000" id="name">
+		            		<input style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" type="text" class="text-center form-control @error('document') is-invalid @enderror form-control-sm" id="document" name="document" value="{{ old('document') }}" placeholder="00000000">
 							@error('document')
 								<span class="invalid-feedback text-center" role="alert">
 									<strong>{{ $message }}</strong>
@@ -74,9 +74,9 @@
 				</div>
             </div>
             <div class="card-body pt-0 pt-md-4" id="services">
-            	<div id="">
+            	{{-- <div id="">
             		<button class="btn btn-sm btn-success">{{ ucwords('agregar servicios') }}</button>
-            	</div>
+            	</div> --}}
             	<div style="display: none">
 	            	<h3 class="mb-4">{{ ucwords('datos de servicio:') }}</h3>
 	            	<div class="row mb-2">
@@ -159,7 +159,7 @@
             	</div>
             	{{-- DESCRIPCION DE LA FACTURA --}}
             	<div class="row mb-2">
-            		<div class="col-sm-12 col-md-12 col-xl-4 text-center">
+            		<div class="col-sm-12 col-md-12 col-xl-12 text-center table-responsive">
             			<table class="table align-items-center table-flush" id="table-product-details">
             			</table>
 			        </div>
@@ -169,36 +169,53 @@
             	{{-- <button class="btn btn-sm btn-success" id="click">boton</button>
             	--}}
 
-            	<button type="button" class="btn btn-success btn-sm">modal</button>
+            	{{-- <button type="button" class="btn btn-success btn-sm">modal</button> --}}
             </div>
           </div>
         </div>
     </div>
-
-
+    <input type="hidden" id="user_session" value="{{ Auth::user()->id }}">
     {{-- modal --}}
 
 	<div class="modal fade bd-example-modal-lg " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-	  <div class="modal-dialog modal-dialog-centered modal-lg">
-	    <div class="modal-content">
-	    	<div class="modal-header">
-	    		<h4 class="modal-title">Lista de productos</h4>
-		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-		          <span aria-hidden="true">&times;</span>
-		        </button>
-		    </div>
-	      <div class="modal-body">
-    			<table class="table align-items-center table-flush" id="table-product">
-    			</table>
-	      </div>
-	  </div>
-	</div>
+		<div class="modal-dialog modal-dialog-centered modal-lg">
+		    <div class="modal-content">
+		    	<div class="modal-header">
+		    		<h4 class="modal-title">Lista de productos</h4>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+			    </div>
+		      <div class="modal-body">
+		      		<div class="row">
+		      			<div class="col-sm-6 col-md-6 col-xl-6 text-center">
+		      				<div class="input-group mb-3">
+			            		<input style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" type="text" class="text-center form-control  form-control-sm" name="code_product" value="" placeholder="BUSQUEDA DE PRODUCTO">
+			            		<div class="input-group-append">
+			            			<span class="btn btn-info btn-sm"><i class="fas fa-search"></i></span>
+			            		</div>
+					        </div>
+		      			</div>
+		      			<div class="col-sm-6 col-md-6 col-xl-6 text-center">
+		      				<input type="number" class="form-control col form-control-sm" id="quantity_input" value= "1" placeholder="CANTIDAD DE PRODUCTO">
+		      			</div>
+		      		</div>
+            		<div class="col-sm-12 col-md-12 col-xl-12 text-center table-responsive">
+						<table class="table align-items-center table-flush" id="table-product">
+						</table>
+            		</div>
+		      </div>
+		  	</div>
+		</div>
 	</div>
 @endsection
 
 @section('script')
 <script type="module">
 	import { common } from './js/common.js';
+	/**
+	 * Description
+	 */
 	$( "#click" ).click(() => {
 		let dataUrl = {
 			url: 'listproduct/'
@@ -213,7 +230,9 @@
 				console.log(err)
 			})
 	})
-
+	/**
+	 * Description
+	 */
 	$( "#search" ).click(() => {
 		let dataUrl = {
 			url: '/client/'+ $('#type_document').val()+$('#document').val(),
@@ -230,10 +249,75 @@
 				console.log(err)
 			})
 	})
-
+	/**
+	 * Description
+	 */
+	let id_bill = null
+	/**
+	 * Description
+	 */
+	$( "#document" ).on('keypress', function(e){
+		if (e.which === 13) {
+		let dataUrl = {
+			url: '/client/'+ $('#type_document').val()+$('#document').val(),
+			type: 'get'
+		}
+		common.getData(dataUrl)
+			.then(res => {
+				if (res.length <= 0) {
+					location.href = '/client/create'
+				}
+				$('#name').val(res[0].name)
+				$('#lastname').val(res[0].lastname)
+				$('#phone').val(res[0].phone)
+				$('#address').val(res[0].address)
+				let data = {
+					id_user : Number($('#user_session').val()),
+					id_client : res[0].id_client,
+					status: 'pendind',
+					date: common.formatDate()
+				}
+				common.postData('bill', data)
+					.then(res => {
+						id_bill = res.id_bill
+					})
+			})
+			.catch(err => {
+				console.log(err)
+			})
+		}
+	})
+	/**
+	 * Description
+	 */
+	function getDataBill_Details () {
+		let dataUrl = {
+			url: '/bill-details/'+ 2,
+			type: 'get'
+		}
+		common.getData(dataUrl)
+			.then(res => {
+				let header = ['index','serial_product', 'model', 'name', 'price','quantity','price_total'];
+				let table = common.dynamicTable(header, res)
+				$("#table-product-details").html(table)
+			})
+	}
+	getDataBill_Details()
+	/**
+	 * Description
+	 */
 	$(document).on("click","#save_key", function() {
-		let id = $(this).val()
-		console.log(id)
+		let id_product = $(this).val()
+		let quantity_input = $('#quantity_input').val()
+		let data = {
+			id_bill: id_bill,
+			id_product: id_product,
+			quantity: quantity_input
+		}
+		common.postData('bill-details', data)
+			.then(res => {
+				console.log(res)
+			})
 	})
 </script>
 @endsection

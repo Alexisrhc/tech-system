@@ -26,5 +26,11 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/provider', 'ProviderController');
     Route::get('/provider', 'ProviderController@index')->name('provider');
 
+    // Route bill
+    Route::resource('/bill', 'BillController');
+
+    // Route bill_detail
+    Route::resource('/  ', 'BillDetailsController');
+
     // Route::get('/register', function(){return view('auth.login');})->name('register');
 });

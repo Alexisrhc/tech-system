@@ -20,7 +20,7 @@ class CreateBillsTable extends Migration
             $table->foreign('id_user')->references('id')->on('users');
             $table->unsignedBigInteger('id_client');
             $table->foreign('id_client')->references('id_client')->on('clients');
-            $table->boolean('status');
+            $table->enum('status', ['pendind','paid','cancelled']);
             $table->timestamps();
         });
     }
