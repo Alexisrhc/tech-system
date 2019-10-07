@@ -341,7 +341,7 @@
 		let data = {
 			id_bill_temporal: $('#id_bill_temporal').val(),
 			id_user	: $('#user_session').val(),
-			id_client: $('#id_client').val(),
+			id_client: $('#id_client').val()
 		}
 		common.postData('bill', data)
 			.then(res => {
