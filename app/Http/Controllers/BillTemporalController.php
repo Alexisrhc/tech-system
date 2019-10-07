@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Bill;
+use App\Bill_temporal;
 use Illuminate\Http\Request;
 
-class BillController extends Controller
+class BillTemporalController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,14 +35,18 @@ class BillController extends Controller
      */
     public function store(Request $request)
     {
-        // $this->validation($request, null);
-        $bills = new Bill;
-        $bills->id_user = $request->id_user;
-        $bills->id_client = $request->id_client;
-        $bills->id_bill_temporal = $request->id_bill_temporal;
+        $bills = new Bill_temporal;
+        $bill = $bills->orderBy('id_bill_temporal', 'desc')
+            ->limit(1)
+            ->first();
+        if (isset($bill->status) && $bill->status === 'pendind') {
+            return response()->json($bill);
+        }
+        $bills->status = $request->status;
         $bills->save();
         return response()->json($bills);
     }
+
     /**
      * Display the specified resource.
      *
@@ -74,8 +78,8 @@ class BillController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $bills = new Bill;
-        $bills->where('id_bill', $id)->update($request->all());
+        $bills = new Bill_temporal;
+        $bills->where('id_bill_temporal', $id)->update($request->all());
         return response()->json($bills);
     }
 

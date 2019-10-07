@@ -21,6 +21,9 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
         //
         '/bill',
-        '/bill-details'
+        '/bill-details',
+        '/bill-details/*',
+        '/bill-temporal',
+        '/bill-temporal/*'
     ];
 }

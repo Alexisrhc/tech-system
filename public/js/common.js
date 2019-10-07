@@ -25,11 +25,20 @@ export const common = {
 						</td>
 					`;
 				}
-				if (value === 'action') {
+				if (value === 'add') {
 					table += `
 						<td>
 							<button class="btn btn-sm btn-success" value="${elemet[key]}" id="save_key">
 								${this.translate('add')}
+							</button>
+						</td>
+					`;
+				}
+				if (value === 'delete') {
+					table += `
+						<td>
+							<button class="btn btn-sm btn-danger" value="${elemet[key]}" id="delete_key">
+								${this.translate('delete')}
 							</button>
 						</td>
 					`;
@@ -42,7 +51,7 @@ export const common = {
 		return table;
 	},
 	/**
-	 * Description
+	 * Obtener Informacion
 	 */
 	getData (urlData) {
 		return new Promise((resolve, reject) => {
@@ -55,13 +64,50 @@ export const common = {
 		})
 	},
 	/**
-	 * Description
+	 * Ebviar informacion
 	 */
 	postData (url, data) {
 		let urlData = {
 			dataType: 'json',
 			type: 'Post',
 			url: url,
+			data: data
+		}
+		return new Promise((resolve, reject) => {
+			$.ajax(urlData)
+				.done((data) => {
+					resolve(data)
+	        	}).fail(() => {
+	        		reject({error: 'error en la peticion'})
+	        	});
+		})
+	},
+	/**
+	 * Eliminar Informacion
+	 */
+	deleteData (url, data) {
+		let urlData = {
+			dataType: 'json',
+			type: 'DELETE',
+			url: `${url}/${data}`
+		}
+		return new Promise((resolve, reject) => {
+			$.ajax(urlData)
+				.done((data) => {
+					resolve(data)
+	        	}).fail(() => {
+	        		reject({error: 'error en la peticion'})
+	        	});
+		})
+	},
+	/**
+	 * Actualizar Informacion
+	 */
+	updateData (url, data) {
+		let urlData = {
+			dataType: 'json',
+			type: 'PUT',
+			url: `${url[0]}/${url[1]}`,
 			data: data
 		}
 		return new Promise((resolve, reject) => {
@@ -91,6 +137,15 @@ export const common = {
 	 	let date = `${new Date().getFullYear()}/${new Date().getMonth() + 1}/${new Date().getDate()}-${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`
 	 	return date
 	 },
+	 /**
+	 * Description
+	 */
+	paramsSearch(data, value) {
+		for (let paramsSearch in data) {
+			data[paramsSearch] = value
+		}
+		return data
+	},
 	/*
 	 * traductor de parametros
 	 */
@@ -108,7 +163,8 @@ export const common = {
 			'smart_card' : 'Smart Card',
 			'description' : 'Descripción',
 			'index': 'Item',
-			'quantity' : 'cantidad'
+			'quantity' : 'cantidad',
+			'delete': 'Eliminar'
 		}
 		return dataTrans[data]
 	}

@@ -39,10 +39,9 @@ class BillDetailsController extends Controller
     {
         // AQUÍ EL AGREGAR
         $bill_detail = new Bill_detail;
-        $bill_detail->id_bill = $request->id_bill;
+        $bill_detail->id_bill_temporal = $request->id_bill_temporal;
         $bill_detail->id_product = $request->id_product;
         $bill_detail->quantity = $request->quantity;
-        $bill_detail->price_total = $request->price_total;
         $bill_detail->save();
         return response()->json($bill_detail);
 
@@ -57,9 +56,11 @@ class BillDetailsController extends Controller
     public function show($id)
     {
         $bills = DB::table('products')
-            ->select('products.id_product','products.serial_product','products.smart_card','products.model','products.name','products.description','products.price','bill_details.quantity','bill_details.price_total')
+            ->select('id_bill_detail','products.id_product','products.serial_product','products.smart_card','products.model','products.name','products.description','products.price','bill_details.quantity')
             ->join('bill_details', 'bill_details.id_product', '=', 'products.id_product')
-            ->where('bill_details.id_bill', '=', $id)
+            ->join('bill_temporals', 'bill_details.id_bill_temporal', '=', 'bill_temporals.id_bill_temporal')
+            ->where('bill_temporals.status', 'pendind')
+            ->where('bill_details.id_bill_temporal', '=', $id)
             ->get();
 
         foreach ($bills as $key => $value) {
@@ -99,6 +100,8 @@ class BillDetailsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $bill = new Bill_detail;
+        $bill->where('id_bill_detail', $id)->delete();
+        return response()->json(['message' => 'delete successfull']);
     }
 }

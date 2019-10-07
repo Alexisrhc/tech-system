@@ -15,34 +15,12 @@ class CreateBillDetailsTable extends Migration
     {
         Schema::create('bill_details', function (Blueprint $table) {
             $table->bigIncrements('id_bill_detail');
-            $table->unsignedBigInteger('id_bill');
-            $table->foreign('id_bill')->references('id_bill')->on('bills');
+            $table->unsignedBigInteger('id_bill_temporal');
+            $table->foreign('id_bill_temporal')->references('id_bill_temporal')->on('bill_temporals');
             $table->unsignedBigInteger('id_product');
             $table->foreign('id_product')->references('id_product')->on('products');
             $table->string('quantity');
-            $table->string('price_total');
             $table->timestamps();
-
-            /*id_bills: [
-                {
-                    id_product: {
-                        price: 2,
-                        name: 24,
-                    },
-                },
-                {
-                    id_product: {
-                        price: 2,
-                        name: 24
-                    },
-                },
-                {
-                    id_product: {
-                        price: 2,
-                        name: 24
-                    },
-                }
-            ]*/
         });
     }
 

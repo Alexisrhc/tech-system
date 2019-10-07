@@ -28,9 +28,9 @@
 									<strong>{{ $message }}</strong>
 								</span>
 							@enderror
-		            		<div class="input-group-append">
+		            		{{-- <div class="input-group-append">
 		            			<button class="btn btn-info btn-sm" id="search"><i class="fas fa-search"></i></button>
-		            		</div>
+		            		</div> --}}
 			            </div>
 			        </div>
 					{{-- APELLIDO --}}
@@ -121,34 +121,9 @@
             <div class="card-body pt-0 pt-md-4">
             	<h3 class="mb-4">{{ ucwords('datos de producto:') }}</h3>
             	<div class="row mb-2">
-            		<div class="col-sm-12 col-md-12 col-xl-4 text-center">
-						<label class="small">
-							{{ ucwords('código de producto:') }}
-						</label>
-	            		<div class="input-group mb-3">
-		            		<input
-		            		style="text-transform:uppercase;"
-		            		onkeyup="javascript:this.value=this.value.toUpperCase();"
-		            		type="text"
-		            		class="text-center form-control @error('code_product') is-invalid @enderror form-control-sm"
-		            		name="code_product"
-		            		value="{{ old('code_product') }}"
-		            		placeholder="CTRL-001">
-							@error('code_product')
-								<span class="invalid-feedback text-center" role="alert">
-									<strong>{{ $message }}</strong>
-								</span>
-							@enderror
-		            		<div class="input-group-append">
-		            			<button class="btn btn-info btn-sm"><i class="fas fa-search"></i></button>
-		            		</div>
-			            </div>
-			        </div>
-
-			        {{--  --}}
 			        <div class="col-sm-12 col-md-12 col-xl-4 text-center">
 			        	<label class="small">
-							{{ ucwords('busar productos:') }}
+							{{ ucwords('buscar productos:') }}
 						</label>
 	            		<div class="input-group mb-3">
 	            			<button class="btn btn-info btn-sm w-100" data-toggle="modal" data-target=".bd-example-modal-lg" type="button" id="click">
@@ -166,15 +141,15 @@
             	</div>
             </div>
             <div class="card-footer pt-3 text-right">
-            	{{-- <button class="btn btn-sm btn-success" id="click">boton</button>
-            	--}}
-
-            	{{-- <button type="button" class="btn btn-success btn-sm">modal</button> --}}
+            	<button type="button" class="btn btn-sm btn-danger" id="cancel_bill">Cancelar</button>
+            	<button type="button" class="btn btn-success btn-sm" id="process_bill">Procesar</button>
             </div>
           </div>
         </div>
     </div>
     <input type="hidden" id="user_session" value="{{ Auth::user()->id }}">
+    <input type="hidden" id="id_bill_temporal" value="">
+    <input type="hidden" id="id_client" value="">
     {{-- modal --}}
 
 	<div class="modal fade bd-example-modal-lg " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -190,7 +165,7 @@
 		      		<div class="row">
 		      			<div class="col-sm-6 col-md-6 col-xl-6 text-center">
 		      				<div class="input-group mb-3">
-			            		<input style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" type="text" class="text-center form-control  form-control-sm" name="code_product" value="" placeholder="BUSQUEDA DE PRODUCTO">
+			            		<input style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase()" id="search_product" type="text" class="text-center form-control  form-control-sm" name="code_product" placeholder="BUSQUEDA DE PRODUCTO">
 			            		<div class="input-group-append">
 			            			<span class="btn btn-info btn-sm"><i class="fas fa-search"></i></span>
 			            		</div>
@@ -214,47 +189,50 @@
 <script type="module">
 	import { common } from './js/common.js';
 	/**
-	 * Description
+	 * Listar productos en la tabla productos
 	 */
 	$( "#click" ).click(() => {
 		let dataUrl = {
-			url: 'listproduct/'
+			url: 'listproduct/',
+			data: {}
 		}
-		common.getData(dataUrl)
+		getTableProduct(dataUrl)
+	})
+
+	/*
+	 * obtener tabla con productos
+	 */
+	function getTableProduct (url) {
+		common.getData(url)
 			.then(res => {
-				let header = ['id_product','serial_product', 'model', 'name', 'price', 'action'];
+				let header = ['id_product','serial_product', 'model', 'name', 'price', 'add'];
 		    	let table = common.dynamicTable(header, res, 'id_product')
 		        $("#table-product").html(table)
 			})
 			.catch(err => {
 				console.log(err)
 			})
-	})
-	/**
-	 * Description
+	}
+
+	/*
+	 * funcion para cancelar factura
 	 */
-	$( "#search" ).click(() => {
-		let dataUrl = {
-			url: '/client/'+ $('#type_document').val()+$('#document').val(),
-			type: 'get'
+	 $( "#cancel_bill" ).click(() => {
+		let data = {
+			status: 'cancelled'
 		}
-		common.getData(dataUrl)
+		common.updateData(['bill-temporal', $('#id_bill_temporal').val()], data)
 			.then(res => {
-				$('#name').val(res[0].name)
-				$('#lastname').val(res[0].lastname)
-				$('#phone').val(res[0].phone)
-				$('#address').val(res[0].address)
+				getDataBill_Details()
 			})
 			.catch(err => {
 				console.log(err)
 			})
 	})
+
+
 	/**
-	 * Description
-	 */
-	let id_bill = null
-	/**
-	 * Description
+	 * obtener datos del cliente por CEDULA en el campo de cedula (enter == key(13))
 	 */
 	$( "#document" ).on('keypress', function(e){
 		if (e.which === 13) {
@@ -267,19 +245,19 @@
 				if (res.length <= 0) {
 					location.href = '/client/create'
 				}
+				$('#id_client').val(res[0].id_client)
 				$('#name').val(res[0].name)
 				$('#lastname').val(res[0].lastname)
 				$('#phone').val(res[0].phone)
 				$('#address').val(res[0].address)
 				let data = {
-					id_user : Number($('#user_session').val()),
-					id_client : res[0].id_client,
 					status: 'pendind',
 					date: common.formatDate()
 				}
-				common.postData('bill', data)
+				common.postData('bill-temporal', data)
 					.then(res => {
-						id_bill = res.id_bill
+						console.log(res)
+						$('#id_bill_temporal').val(res.id_bill_temporal)
 					})
 			})
 			.catch(err => {
@@ -287,22 +265,47 @@
 			})
 		}
 	})
+
 	/**
-	 * Description
+	 * Obtener detalle de factura
 	 */
 	function getDataBill_Details () {
 		let dataUrl = {
-			url: '/bill-details/'+ 2,
+			url: '/bill-details/'+ $('#id_bill_temporal').val(),
 			type: 'get'
 		}
 		common.getData(dataUrl)
 			.then(res => {
-				let header = ['index','serial_product', 'model', 'name', 'price','quantity','price_total'];
-				let table = common.dynamicTable(header, res)
-				$("#table-product-details").html(table)
+				if (res) {
+					let header = ['index','serial_product', 'model', 'name', 'price','quantity','price_total', 'delete'];
+					let table = common.dynamicTable(header, res, 'id_bill_detail')
+					$("#table-product-details").html(table)
+				}
 			})
 	}
-	getDataBill_Details()
+	/**
+	 * buscar producto por clave o por nombre
+	 */
+	$(document).on('keyup', '#search_product', () => {
+		let value = $('#search_product').val()
+		let valueSearch = {
+			name: null,
+			code_product: null,
+			serial_product: null,
+			price: null
+		}
+		let url = {
+			url: 'listproduct/',
+			/**
+			 * ESTO valueSearch ES EL KEY? esos son los parametros :o YA VEO
+			 */
+			data: common.paramsSearch(valueSearch, value)
+		}
+		setTimeout(() => {
+			getTableProduct(url)
+		}, 200)
+	})
+
 	/**
 	 * Description
 	 */
@@ -310,14 +313,42 @@
 		let id_product = $(this).val()
 		let quantity_input = $('#quantity_input').val()
 		let data = {
-			id_bill: id_bill,
+			id_bill_temporal: $('#id_bill_temporal').val(),
 			id_product: id_product,
 			quantity: quantity_input
 		}
 		common.postData('bill-details', data)
 			.then(res => {
-				console.log(res)
+				getDataBill_Details()
 			})
 	})
+
+	/**
+	 * Eliminar producto de la lista detalle
+	 */
+	$(document).on("click","#delete_key", function() {
+		let id_details = $(this).val()
+		common.deleteData('bill-details', id_details)
+			.then(res => {
+				getDataBill_Details()
+			})
+	})
+
+	 /**
+	 * Enviar Bill
+	 */
+	$(document).on("click","#process_bill", function() {
+		let data = {
+			id_bill_temporal: $('#id_bill_temporal').val(),
+			id_user	: $('#user_session').val(),
+			id_client: $('#id_client').val(),
+		}
+		common.postData('bill', data)
+			.then(res => {
+				console.log('priented');
+			})
+	})
+	getDataBill_Details()
+
 </script>
 @endsection

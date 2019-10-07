@@ -12,5 +12,5 @@ class Bill_detail extends Model
      *
      * @var array
      */
-    protected $fillable = ['id_bill_detail', 'id_bill', 'id_product', 'quantity'];
+    protected $fillable = ['id_bill_detail', 'id_bill_temporal', 'id_product', 'quantity'];
 }

@@ -29,8 +29,12 @@ Route::middleware(['auth'])->group(function () {
     // Route bill
     Route::resource('/bill', 'BillController');
 
+    // Route bill_temporal
+    Route::resource('/bill-temporal', 'BillTemporalController');
+
     // Route bill_detail
-    Route::resource('/  ', 'BillDetailsController');
+    Route::resource('/bill-details', 'BillDetailsController');
+
 
     // Route::get('/register', function(){return view('auth.login');})->name('register');
 });

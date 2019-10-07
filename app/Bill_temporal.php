@@ -4,13 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Bill extends Model
+class Bill_temporal extends Model
 {
-    protected $primaryKey = 'id_bill';
+    protected $primaryKey = 'id_bill_temporal';
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['id_bill', 'id_user', 'id_client','id_bill_temporal'];
+    protected $fillable = ['id_bill_temporal', 'status'];
 }

@@ -39,8 +39,26 @@ class ProductController extends Controller
         $products = DB::table('products')->paginate(10);
         return view('product.index', compact('products'));
     }
-
-    public function listProduct () {
+    /**
+     * Description
+     */
+    public function listProduct (Request $request) {
+        if ($request) {
+            // foreach ($request->all() as $key => $value) {
+            //     if (isset($request[$key])) {
+            //         $products = DB::table('products')
+            //         ->orWhere($key, 'LIKE', "%$request[$key]%")->get();
+            //         return response()->json($products, 200);
+            //         /*
+            //          * y si solo busca por nombre de producto que es lo mas seguro que va a buscar!
+            //          */
+            //     }
+            // }
+            $products = DB::table('products')
+                    ->orWhere('code_product', 'LIKE', "%$request->code_product%")
+                    ->orWhere('name', 'LIKE', "%$request->name%")->get();
+                    return response()->json($products, 200);
+        }
         $products = DB::table('products')->get();
         return response()->json($products, 200);
     }
