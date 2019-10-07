@@ -21,7 +21,6 @@ class CreateBillsTable extends Migration
             $table->foreign('id_client')->references('id_client')->on('clients');
             $table->unsignedBigInteger('id_bill_temporal');
             $table->foreign('id_bill_temporal')->references('id_bill_temporal')->on('bill_temporals');
-            $table->enum('status', ['pendind','paid','cancelled']);
             $table->timestamps();
         });
     }
