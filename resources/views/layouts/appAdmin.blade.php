@@ -120,6 +120,13 @@
               Proveedores
             </a>
           </li>
+
+          <li class="nav-item">
+            <a class="nav-link {{ Request::is('store') || Request::is('store/create') ? 'active' : '' }}" href="{{ route('store') }}">
+              <img src="{{ asset('assets/img/svg/store.svg') }}" width="18px" class="mr-3">
+              Tiendas
+            </a>
+          </li>
         </ul>
       </div>
     </div>

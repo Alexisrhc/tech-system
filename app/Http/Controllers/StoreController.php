@@ -2,32 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Store;
 use Illuminate\Http\Request;
-use App\Client;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
-class ClientController extends Controller
+class StoreController extends Controller
 {
-    /**
-     * validate data of request
-     * @param  [Request] $request data
-     * @param  [String] $documents number documents
-     * @return [Function]  function validator
-     */
     private function validation (Request $request, $documents) {
         if ($documents !== null) {
-            $unique = Rule::unique('clients')->ignore($request->document, 'document');
+            $unique = Rule::unique('stores')->ignore($request->name, 'document');
         } else {
-            $unique = 'unique:clients|required';
+            $unique = 'unique:stores|required';
         }
         $validator = $request->validate([
-            'document' =>  $unique,
             'name' => 'required',
-            'lastname' => 'required',
-            'email' => 'required',
-            'phone' => 'required',
             'address' => 'required'
         ]);
         return $validator;
@@ -39,8 +28,8 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $clients = DB::table('clients')->paginate(10);
-        return view('client.index', ['clients' => $clients]);
+        $stores = DB::table('stores')->paginate(10);
+        return view('store.index', ['stores' => $stores]);
     }
 
     /**
@@ -50,7 +39,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        return view('client.create');
+        return view('store.create');
     }
 
     /**
@@ -61,17 +50,13 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        // Validate the request...
         $this->validation($request, null);
-        $client = new Client;
-        $client->document = $request->type_document.$request->document;
-        $client->name = $request->name;
-        $client->lastname = $request->lastname;
-        $client->email = $request->email;
-        $client->address = $request->address;
-        $client->phone = $request->phone;
-        $client->save();
-        return redirect('client')->with('success', 'Agregado exitosamente');
+        $store = new Store;
+        $store->name = $request->name;
+        $store->phone = $request->phone;
+        $store->address = $request->address;
+        $store->save();
+        return redirect('store')->with('success', 'Agregado exitosamente');
     }
 
     /**
@@ -82,8 +67,7 @@ class ClientController extends Controller
      */
     public function show($id)
     {
-        $client = DB::table('clients')->where('document', $id)->get();
-        return response()->json($client, 200);
+        //
     }
 
     /**
@@ -94,8 +78,8 @@ class ClientController extends Controller
      */
     public function edit($id)
     {
-        $client = DB::table('clients')->where('id_client', $id)->get();
-        return view('client.edit', compact('client'));
+        $store = DB::table('stores')->where('id_store', $id)->get();
+        return view('store.edit', compact('store'));
     }
 
     /**
@@ -108,15 +92,11 @@ class ClientController extends Controller
     public function update(Request $request, $id)
     {
         $this->validation($request, $id);
-         DB::table('clients')->where('id_client', $id)->update([
-            'document' => $request->document,
+         DB::table('stores')->where('id_store', $id)->update([
             'name' => $request->name,
-            'lastname'=> $request->lastname,
-            'email'=> $request->email,
-            'phone'=> $request->phone,
             'address'=> $request->address
         ]);
-        return redirect('client')->with('success', 'Modificado exitosamente');
+        return redirect('store')->with('success', 'Modificado exitosamente');
     }
 
     /**
@@ -127,9 +107,7 @@ class ClientController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('clients')->where('id_client', $id)->delete();
-        return redirect('client')->with('success', 'Eliminado exitosamente');
+        DB::table('stores')->where('id_store', $id)->delete();
+        return redirect('store')->with('success', 'Eliminado exitosamente');
     }
 }
-
-//estas viendo eso????

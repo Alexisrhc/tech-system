@@ -19,7 +19,7 @@
 									</label>
 									<div class="col-sm-10">
 										<div class="input-group input-group-alternative">
-											<input style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" type="text" class="form-control @error('rif') is-invalid @enderror" name="rif" value="{{$provider[0]->rif}}" value="{{$provider[0]->rif}}">
+											<input style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" type="text" class="form-control @error('rif') is-invalid @enderror" name="rif" value="{{$provider[0]->rif}}">
 											@error('rif')
 												<span class="invalid-feedback text-center" role="alert">
 													<strong>{{ $message }}</strong>

@@ -26,6 +26,10 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/provider', 'ProviderController');
     Route::get('/provider', 'ProviderController@index')->name('provider');
 
+    // Route store
+    Route::resource('/store', 'StoreController');
+    Route::get('/store', 'StoreController@index')->name('store');
+
     // Route bill
     Route::resource('/bill', 'BillController');
 

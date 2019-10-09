@@ -16,6 +16,7 @@ class CreateStoresTable extends Migration
         Schema::create('stores', function (Blueprint $table) {
             $table->bigIncrements('id_store');
             $table->string('name');
+            $table->string('phone');
             $table->string('address');
             $table->timestamps();
         });
