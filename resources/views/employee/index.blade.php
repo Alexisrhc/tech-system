@@ -30,8 +30,6 @@
               <table class="table align-items-center table-flush">
                 <thead class="thead-light">
                   <tr>
-                    <th scope="col">Código</th>
-                    <th scope="col">Documento</th>
                     <th scope="col">Nombre(s)</th>
                     <th scope="col">Apellido(s)</th>
                     <th scope="col">Correo</th>
@@ -42,12 +40,6 @@
                 <tbody>
                   @foreach ($Users as $user)
                     <tr>
-                      <td>
-                        {{$user->code}}
-                      </td>
-                      <td>
-                        {{ ucwords($user->document)}}
-                      </td>
                       <td>
                         {{ucwords(ucwords($user->name))}}
                       </td>
