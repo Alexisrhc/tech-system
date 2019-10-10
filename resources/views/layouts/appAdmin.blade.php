@@ -300,5 +300,5 @@
         application: "argon-dashboard-free"
       });
   </script>
-    @yield('script')
+  @yield('script')
 </body>

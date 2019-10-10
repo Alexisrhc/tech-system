@@ -60,7 +60,7 @@
 											class="form-control @error('document') is-invalid @enderror"
 											name="document"
 											value="{{ $seller[0]->document }}"
-											value="{{ old('document') }}">
+											>
 											@error('document')
 												<span class="invalid-feedback text-center" role="alert">
 													<strong>{{ $message }}</strong>

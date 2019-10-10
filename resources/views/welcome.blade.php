@@ -277,7 +277,7 @@
 		common.getData(dataUrl)
 			.then(res => {
 				if (res) {
-					let header = ['index','serial_product', 'model', 'name', 'price','quantity','price_total', 'delete'];
+					let header = ['index','serial_product', 'model', 'name', 'price','quantity','price_total', 'delete', 'total'];
 					let table = common.dynamicTable(header, res, 'id_bill_detail')
 					$("#table-product-details").html(table)
 				}

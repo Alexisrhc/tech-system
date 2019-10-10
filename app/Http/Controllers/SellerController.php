@@ -29,7 +29,7 @@ class SellerController extends Controller
         // }
         $validator = $request->validate([
             'document' =>  $unique,
-            // 'code' =>  $unique,
+            'code' =>  $unique,
             'name' => 'required',
             'lastname' => 'required',
             'email' => 'required|email',
@@ -120,19 +120,19 @@ class SellerController extends Controller
         $dataUser = [];
         if (!empty($request->password)) {
             $dataUser = [
+                // 'code' => $request->code,
+                // 'document'=> $request->document,
                 'name'=> $request->name,
                 'lastname'=> $request->lastname,
-                'document'=> $request->document,
-                'code' => $request->code,
                 'rol_user' => $request->rol_user,
                 'password' => Hash::make($request->password),
             ];
         } else {
             $dataUser = [
+                // 'code' => $request->code,
+                // 'document'=> $request->document,
                 'name'=> $request->name,
                 'lastname'=> $request->lastname,
-                'document'=> $request->document,
-                'code' => $request->code,
                 'rol_user' => $request->rol_user,
             ];
         }

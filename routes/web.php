@@ -39,6 +39,13 @@ Route::middleware(['auth'])->group(function () {
     // Route bill_detail
     Route::resource('/bill-details', 'BillDetailsController');
 
+    // Route printed-invoice
+    Route::get('/printed-invoice/{id}', 'PrintedInvoiceController@index')->name('printedinvoice');
+    // Route::resource('/printed-invoice', 'PrintedInvoiceController');
+    Route::get('/imprimir/{id}', 'PrintedInvoiceController@imprimir')->name('printed');
+
+
+
 
     // Route::get('/register', function(){return view('auth.login');})->name('register');
 });
