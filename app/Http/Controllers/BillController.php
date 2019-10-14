@@ -60,7 +60,7 @@ class BillController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validation($request, null);
+        // $this->validation($request, null);
         $bills = new Bill;
         $bills->id_user = $request->id_user;
         $bills->id_client = $request->id_client;
