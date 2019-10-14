@@ -3,7 +3,7 @@
 @section('content')
 	<div class="row">
         <div class="col-md-12 text-right">
-        	<a href="{{ route('printed', 1) }}" class="btn btn-sm btn-success">
+        	<a target="_blank" href="{{ route('printed', $printedinvoice->id_bill_temporal) }}" class="btn btn-sm btn-success">
         		GENERAR REPORTE DE FACTURA
         	</a>
         </div>
@@ -22,6 +22,7 @@
 						</label>
 						<div class="col-sm-9">
 							<div class="input-group input-group-alternative">
+								<input type="hidden" value="{{$printedinvoice->id_bill_temporal}}" id="temporal">
 								<input
 								style="text-transform:uppercase;"
 								onkeyup="javascript:this.value=this.value.toUpperCase();"
@@ -149,7 +150,7 @@
 	import { common } from '../js/common.js';
 	function getBill () {
 		let url = {
-			url: '/imprimir/' + 1,
+			url: '/imprimir/' + $('#temporal').val(),
 			data: {
 				bills: false
 			}

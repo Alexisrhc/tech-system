@@ -92,10 +92,25 @@
               Inicio
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link {{ Request::is('bill') || Request::is('bill/create')  ? 'active' : '' }}" href="{{ route('bill') }}">
+              <i class="ni ni-folder-17 text-primary"></i>
+              Facturas
+            </a>
+          </li>
           <li class="nav-item ">
             <a class="nav-link {{ Request::is('client') || Request::is('client/create') ? 'active' : '' }}" href="{{ route('client') }}">
               <img src="{{ asset('assets/img/svg/client.svg') }}" width="18px" class="mr-3">
               Clientes
+            </a>
+          </li>
+        </ul>
+        <hr class="my-3">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link {{ Request::is('store') || Request::is('store/create') ? 'active' : '' }}" href="{{ route('store') }}">
+              <img src="{{ asset('assets/img/svg/store.svg') }}" width="18px" class="mr-3">
+              Tiendas
             </a>
           </li>
           <li class="nav-item">
@@ -104,9 +119,6 @@
               Productos
             </a>
           </li>
-        </ul>
-        <hr class="my-3">
-        <ul class="navbar-nav">
           <li class="nav-item">
             <a class="nav-link {{ Request::is('employee') || Request::is('employee/create') ? 'active' : '' }}" href="{{ route('employee') }}">
               <img src="{{ asset('assets/img/svg/seller.svg') }}" width="18px" class="mr-3">
@@ -121,12 +133,6 @@
             </a>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link {{ Request::is('store') || Request::is('store/create') ? 'active' : '' }}" href="{{ route('store') }}">
-              <img src="{{ asset('assets/img/svg/store.svg') }}" width="18px" class="mr-3">
-              Tiendas
-            </a>
-          </li>
         </ul>
       </div>
     </div>

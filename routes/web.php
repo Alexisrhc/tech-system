@@ -32,6 +32,8 @@ Route::middleware(['auth'])->group(function () {
 
     // Route bill
     Route::resource('/bill', 'BillController');
+    Route::get('/bill', 'BillController@index')->name('bill');
+
 
     // Route bill_temporal
     Route::resource('/bill-temporal', 'BillTemporalController');

@@ -218,8 +218,8 @@
             <th class="service">ITEM</th>
             <th class="service">MODELO</th>
             <th class="desc">DESCRIPCIÓN</th>
-            <th>PRECIO UNI</th>
             <th>CANTIDAD</th>
+            <th>PRECIO UNI</th>
             <th>TOTAL</th>
           </tr>
         </thead>

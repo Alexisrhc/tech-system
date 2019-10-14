@@ -201,7 +201,7 @@
 											style="text-transform:uppercase;"
 											onkeyup="javascript:this.value=this.value.toUpperCase();"
 											id="quantity"
-											type="quantity" class="form-control @error('quantity') is-invalid @enderror"
+											type="number" class="form-control @error('quantity') is-invalid @enderror"
 											name="quantity"
 											value="{{$product[0]->quantity}}">
 											@error('quantity')

@@ -256,7 +256,7 @@
 				}
 				common.postData('bill-temporal', data)
 					.then(res => {
-						console.log(res)
+						// console.log(res)
 						$('#id_bill_temporal').val(res.id_bill_temporal)
 					})
 			})
@@ -345,7 +345,8 @@
 		}
 		common.postData('bill', data)
 			.then(res => {
-				console.log('priented');
+				location.href = 'printed-invoice/'+res.id_bill_temporal
+				// console.log('priented');
 			})
 	})
 	getDataBill_Details()

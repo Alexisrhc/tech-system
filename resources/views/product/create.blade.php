@@ -160,11 +160,7 @@
 													<img src="{{ asset('assets/img/svg/layers-3_primary.svg') }}" width="18px" class="ml-2 mr-2">
 												</span>
 											</div>
-											    <select class="form-control" id="quantity" type="text" class="form-control @error('quantity') is-invalid @enderror" name="quantity" value="{{ old('quantity') }}">
-											    	@for($i = 1; $i <= 10; $i++)
-											    		<option>{{ $i }}</option>
-											    	@endfor
-											    </select>
+											    <input class="form-control" id="quantity" type="number" class="form-control @error('quantity') is-invalid @enderror" name="quantity" placeholder="CANTIDAD" value="{{ old('quantity') }}" />
 											@error('quantity')
 												<span class="invalid-feedback text-center" role="alert">
 													<strong>{{ $message }}</strong>

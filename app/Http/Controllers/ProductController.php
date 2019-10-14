@@ -23,7 +23,7 @@ class ProductController extends Controller
             $unique = 'unique:products|required';
         }
         $validator = $request->validate([
-            'code_product' => $unique,
+            // 'code_product' => $unique,
             'serial_product' => 'required',
             'name' => 'required',
         ]);

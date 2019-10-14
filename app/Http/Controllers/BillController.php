@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Bill;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BillController extends Controller
 {
@@ -14,7 +15,31 @@ class BillController extends Controller
      */
     public function index()
     {
-        //
+        $bills = DB::table('bills')
+            ->select(
+                'clients.name as nameClient',
+                'clients.lastname',
+                'clients.email',
+                'clients.address',
+                'bills.id_bill',
+                'bills.created_at',
+                'bills.status',
+                'bills.id_bill_temporal',
+                'users.name as nameUser',
+                'users.lastname as lastnameUser'
+            )
+            ->join(
+                'users',
+                'users.id',
+                'bills.id_user'
+            )
+            ->join(
+                'clients',
+                'clients.id_client',
+                'bills.id_client',
+            )
+            ->paginate(10);
+        return view('bill.index', compact('bills'));
     }
 
     /**
