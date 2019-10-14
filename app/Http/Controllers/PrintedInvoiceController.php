@@ -15,7 +15,7 @@ class PrintedInvoiceController extends Controller
      */
     public function index($id)
     {
-        $printedinvoice = DB::table('bills')->where('id_bill', $id)->first();
+        $printedinvoice = DB::table('bills')->where('id_bill_temporal', $id)->first();
         $user = DB::table('users')->where('id', $printedinvoice->id_user)->first();
         $client = DB::table('clients')->where('id_client', $printedinvoice->id_client)->first();
         print_r($printedinvoice);
