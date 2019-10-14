@@ -65,6 +65,7 @@ class BillController extends Controller
         $bills->id_user = $request->id_user;
         $bills->id_client = $request->id_client;
         $bills->id_bill_temporal = $request->id_bill_temporal;
+        $bills->status = $request->status;
         $bills->save();
         return response()->json($bills);
     }
