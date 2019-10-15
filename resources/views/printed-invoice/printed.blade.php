@@ -52,7 +52,7 @@
 	  font-weight: normal;
 	  text-align: center;
 	  margin: 0 0 20px 0;
-	  background: url('assets/img/theme/dimension_pdf.png');
+	  /*background: url('assets/img/theme/dimension_pdf.png');*/
 	}
 
 	h3 {
@@ -159,7 +159,7 @@
   <body>
     <header class="clearfix">
       <div id="logo">
-        <img src="assets/img/brand/blue.png" width="900px">
+        {{-- <img src="assets/img/brand/blue.png" width="900px"> --}}
       </div>
       <h3>COMPROVANTE DE VENTA</h3>
       <div id="company" class="clearfix">
