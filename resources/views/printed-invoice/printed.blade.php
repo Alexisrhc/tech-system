@@ -161,7 +161,7 @@
       <div id="logo">
         {{-- <img src="{{ asset('assets/img/brand/blue.png') }}" width="900px"> --}}
       </div>
-      <h3>COMPROVANTE DE VENTA</h3>
+      <h3>COMPROBANTE DE VENTA</h3>
       <div id="company" class="clearfix">
         <div>Company Name</div>
         <div>455 Foggy Heights,<br /> AZ 85004, US</div>
