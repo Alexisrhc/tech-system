@@ -159,7 +159,7 @@
   <body>
     <header class="clearfix">
       <div id="logo">
-        {{-- <img src="assets/img/brand/blue.png" width="900px"> --}}
+        <img src="{{ asset('assets/img/brand/blue.png') }}" width="900px">
       </div>
       <h3>COMPROVANTE DE VENTA</h3>
       <div id="company" class="clearfix">
