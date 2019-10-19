@@ -188,6 +188,7 @@
 @section('script')
 <script type="module">
 	import { common } from './js/common.js';
+	let products = []
 	/**
 	 * Listar productos en la tabla productos
 	 */
@@ -258,6 +259,7 @@
 					.then(res => {
 						// console.log(res)
 						$('#id_bill_temporal').val(res.id_bill_temporal)
+						getDataBill_Details()
 					})
 			})
 			.catch(err => {
@@ -277,6 +279,7 @@
 		common.getData(dataUrl)
 			.then(res => {
 				if (res) {
+					products = res
 					let header = ['index','serial_product', 'model', 'name', 'price','quantity','price_total', 'delete', 'total'];
 					let table = common.dynamicTable(header, res, 'id_bill_detail')
 					$("#table-product-details").html(table)
@@ -346,7 +349,24 @@
 		}
 		common.postData('bill', data)
 			.then(res => {
-				location.href = 'printed-invoice/'+res.id_bill_temporal
+				// location.href = 'printed-invoice/'+res.id_bill_temporal
+				products.forEach(element => {
+					// console.log(element)
+					common.updateData(
+						[
+							'product',
+							element['id_product']
+						],
+						{
+							quantity: element['quantity'],
+							serial_product: element['serial_product'],
+							name: element['name']
+						}
+					)
+					.then(res => {
+						console.log(res)
+					})
+				})
 				// console.log('priented');
 			})
 	})
