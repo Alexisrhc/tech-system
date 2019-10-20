@@ -116,9 +116,9 @@
             	</div>
 			</div>
             <div class="card-body pt-0 pt-md-4">
-            	<h3 class="mb-4">{{ ucwords('datos de producto:') }}</h3>
-            	<div class="row mb-2">
-			        <div class="col-sm-12 col-md-12 col-xl-4 text-center">
+            	{{-- <h3 class="mb-4">{{ ucwords('datos de producto:') }}</h3> --}}
+            	<div class="row mb-2 justify-content-end">
+			        <div class="col-sm-12 col-md-12 col-xl-3 text-center ">
 			        	<label class="small">
 							{{ ucwords('buscar productos:') }}
 						</label>
@@ -225,10 +225,17 @@
 	 	common.updateData(['bill-temporal', $('#id_bill_temporal').val()], data)
 			.then(res => {
 				getDataBill_Details()
+				$('#document').val('')
+				$('#id_client').val('')
+				$('#name').val('')
+				$('#lastname').val('')
+				$('#phone').val('')
+				$('#address').val('')
 			})
 			.catch(err => {
 				console.log(err)
 			})
+
 	})
 
 
