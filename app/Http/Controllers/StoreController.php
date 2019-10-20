@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Store;
-use Illuminate\Contracts\Session\Session;
+use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Validation\Rule;
 
 class StoreController extends Controller
 {
@@ -33,11 +32,6 @@ class StoreController extends Controller
         return view('store.index', ['stores' => $stores]);
     }
 
-    public function selectStore () {
-        $stores = DB::table('stores')->get();
-        return response()->json($stores);
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -45,6 +39,7 @@ class StoreController extends Controller
      */
     public function create()
     {
+        // echo "ver";
         return view('store.create');
     }
 
@@ -117,5 +112,11 @@ class StoreController extends Controller
     {
         DB::table('stores')->where('id_store', $id)->delete();
         return redirect('store')->with('success', 'Eliminado exitosamente');
+    }
+
+    public function selectStore()
+    {
+        $stores = DB::table('stores')->get();
+        return response()->json($stores);
     }
 }

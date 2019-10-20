@@ -1,8 +1,9 @@
 <?php
-
-Auth::routes();
+Route::get('/store/create', 'StoreController@create');
 Route::get('/selectStore', 'StoreController@selectStore')->name('selectStore');
 Route::get('/store/{id}', 'StoreController@show')->name('store');
+
+Auth::routes();
 
 Route::middleware(['guest'])->group(function () {
     Route::get('/', function () {return view('auth.login');});
@@ -11,6 +12,8 @@ Route::middleware(['guest'])->group(function () {
     //     return view('auth.login');
     // })->name('login');
 });
+
+
 Route::middleware(['auth'])->group(function () {
     // Home
     Route::get('/home', 'HomeController@index')->name('home');
@@ -33,6 +36,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/store', 'StoreController');
     Route::get('/store', 'StoreController@index')->name('store');
 
+    // Route::resource('/store', 'StoreController');
+
     // Route bill
     Route::resource('/bill', 'BillController');
     Route::get('/bill', 'BillController@index')->name('bill');
@@ -54,3 +59,4 @@ Route::middleware(['auth'])->group(function () {
 
     // Route::get('/register', function(){return view('auth.login');})->name('register');
 });
+

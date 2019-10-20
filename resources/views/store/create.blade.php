@@ -1,7 +1,4 @@
-habla
-
-
-{{-- @extends('layouts.appAdmin')
+@extends('layouts.appAdmin')
 
 @section('content')
     <div class="row">
@@ -79,4 +76,4 @@ habla
 	    	</div>
 		</div>
     </div>
-@endsection --}}
+@endsection
