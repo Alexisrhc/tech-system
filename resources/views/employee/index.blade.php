@@ -34,6 +34,7 @@
                     <th scope="col">Apellido(s)</th>
                     <th scope="col">Correo</th>
                     <th scope="col">Tipo Usuario</th>
+                    <th scope="col">Actividad</th>
                     <th>Acción</th>
                   </tr>
                 </thead>
@@ -51,6 +52,9 @@
                       </td>
                       <td>
                         {{ trans('admin.'.$user->rol_user) }}
+                      </td>
+                      <td>
+                        <a href="{{ route('activity',1) }}">Ver</a>
                       </td>
                       <td>
                         <form action="{{route('employee.destroy', $user->id)}}" method="POST">

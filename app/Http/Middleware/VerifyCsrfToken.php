@@ -26,6 +26,7 @@ class VerifyCsrfToken extends Middleware
         '/bill-temporal',
         '/bill-temporal/*',
         '/product/*',
-        '/productQuantity/*'
+        '/productQuantity/*',
+        '/activity'
     ];
 }

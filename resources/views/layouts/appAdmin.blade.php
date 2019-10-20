@@ -85,6 +85,7 @@
           </div>
         </form>
         <!-- Navigation  telefono-->
+
         <ul class="navbar-nav">
           <li class="nav-item">
             <a class="nav-link {{ Request::is('home') || Request::is('home/create')  ? 'active' : '' }}" href="{{ route('home') }}">
@@ -105,6 +106,9 @@
             </a>
           </li>
         </ul>
+
+        {{-- admin --}}
+        @if(Auth::user()->rol_user == 'admin')
         <hr class="my-3">
         <ul class="navbar-nav">
           <li class="nav-item">
@@ -125,15 +129,15 @@
               Empleados
             </a>
           </li>
-
           <li class="nav-item">
             <a class="nav-link {{ Request::is('provider') || Request::is('provider/create') ? 'active' : '' }}" href="{{ route('provider') }}">
               <img src="{{ asset('assets/img/svg/seller.svg') }}" width="18px" class="mr-3">
               Proveedores
             </a>
           </li>
-
         </ul>
+        @endif
+
       </div>
     </div>
   </nav>

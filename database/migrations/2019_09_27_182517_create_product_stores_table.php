@@ -22,7 +22,6 @@ class CreateProductStoresTable extends Migration
             $table->unsignedBigInteger('id_store');
             $table->foreign('id_store')->references('id_store')->on('stores');
 
-
             $table->timestamps();
         });
     }

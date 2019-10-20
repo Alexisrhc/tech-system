@@ -42,10 +42,13 @@ class PrintedInvoiceController extends Controller
                 'products.price',
                 'bills.id_bill_temporal',
                 'bills.created_at',
-                'bill_details.quantity'
+                'bill_details.quantity',
+                'users.name as nameBill',
+                'users.lastname as lastnameBill',
+                'stores.name as nameStore',
+                'stores.phone as phoneStore'
                 // DB::raw('SUM(bill_details.quantity) as quantity')
             )
-            // ->groupBy('bill_details.id_bill_detail')
             ->join(
                 'bill_details',
                 'bill_details.id_product',
@@ -55,6 +58,11 @@ class PrintedInvoiceController extends Controller
                 'bills',
                 'bill_details.id_bill_temporal',
                 'bills.id_bill_temporal'
+            )
+            ->join(
+                'stores',
+                'stores.id_store',
+                'bills.id_store'
             )
             ->join(
                 'users',

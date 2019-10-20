@@ -148,12 +148,12 @@
     <input type="hidden" id="id_bill_temporal" value="">
     <input type="hidden" id="id_client" value="">
     @if(Session::has('store'))
-    	<input type="text" id="id_store" value="{{ Session::get('store')[0]->id_store }}">
+    	<input type="hidden" id="id_store" value="{{ Session::get('store')[0]->id_store }}">
     @endif
     {{-- modal --}}
 
-	<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered">
+	<div class="modal fade bd-example-modal-lg " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-lg">
 		    <div class="modal-content">
 		    	<div class="modal-header">
 		    		<h4 class="modal-title">Lista de productos</h4>
@@ -345,7 +345,7 @@
 			id_bill_temporal: $('#id_bill_temporal').val(),
 			id_user	: $('#user_session').val(),
 			id_client: $('#id_client').val(),
-			id_store: $('#id_client').val(),
+			id_store: $('#id_store').val(),
 			status: 'pendind'
 		}
 		common.postData('bill', data)

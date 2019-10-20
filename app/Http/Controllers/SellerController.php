@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
@@ -44,7 +45,7 @@ class SellerController extends Controller
      */
     public function index()
     {
-        $Users = DB::table('users')->paginate(10);
+        $Users = DB::table('users')->where('id', '!=', Auth::user()->id)->paginate(10);
         return view('employee.index', compact('Users'));
     }
 

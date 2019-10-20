@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -194,12 +193,25 @@
       </div>
       <div id="project">
       	<div>
+        	<span>TIENDA</span>
+        	{{ $bills[0]->nameStore }}
+      	</div>
+      	<div>
+        	<span>VENDEDOR</span>
+        	{{ strtoupper($bills[0]->nameBill) }} {{ strtoupper($bills[0]->lastnameBill) }}
+      	</div>
+      	<div>
         	<span>EMPRESA</span>
         	TECHNOLOGICALPROJECT C.A.
       	</div>
       	<div>
         	<span>TELEFONO</span>
-        	0000-000-00-00
+        	@if(Session::has('store'))
+        	{{
+              strtoupper(Session::get('store')[0]->phone)
+            }}
+            @endif
+
       	</div>
       	<div>
         	<span>E-MAIL</span>

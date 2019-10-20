@@ -22,13 +22,13 @@
     		@endif
     	</div>
     	<div class="col">
-          <div class="card shadow">
-            <div class="card-header border-0">
-              <h3 class="mb-0">{{ucwords('lista de tiendas')}}</h3>
-            </div>
-            <div class="table-responsive">
-              <table class="table align-items-center table-flush">
-                <thead class="thead-light">
+        <div class="card shadow">
+          <div class="card-header border-0">
+            <h3 class="mb-0">{{ucwords('lista de tiendas')}}</h3>
+          </div>
+          <div class="table-responsive">
+            <table class="table align-items-center table-flush">
+              <thead class="thead-light">
                   <tr>
                     <th scope="col">{{ucwords('nombre')}}</th>
                     <th scope="col">{{ucwords('telefono')}}</th>
