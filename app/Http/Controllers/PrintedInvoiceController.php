@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Activity;
 use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class PrintedInvoiceController extends Controller
@@ -26,6 +28,10 @@ class PrintedInvoiceController extends Controller
      */
     public function imprimir(Request $request, $id){
         // aqui actualizamos el estado de la factura enviada a imprimir
+
+
+
+
         $bills = DB::table('products')
             ->select(
                 'id_bill_detail',
@@ -86,6 +92,11 @@ class PrintedInvoiceController extends Controller
             return response()->json(['bills' => $bills, 'total'=> $total]);
         }
         $this->update($id);
+
+        $activity = new Activity;
+        $activity->id_user = Auth::user()->id;
+        $activity->activity = 'Imprime reporte de factura #'.$id;
+        $activity->save();
 
         # code...
         $pdf = \PDF::loadView('printed-invoice.printed', compact('bills', 'total'));

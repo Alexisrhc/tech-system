@@ -6,23 +6,22 @@
         <div class="col">
         <div class="card shadow">
           <div class="card-header border-0">
-            <h3 class="mb-0">{{ucwords('actividad de: ')}}</h3>
+            <h3 class="mb-0">{{ucwords('actividad de: ') }} {{ ucwords($activitys[0]->nameUser) }} {{ ucwords($activitys[0]->lastnameUser) }}</h3>
           </div>
           <div class="table-responsive">
             <table class="table align-items-center table-flush">
               <thead class="thead-light">
                   <tr>
-                    <th scope="col">{{ucwords('id_user')}}</th>
+                    <th scope="col">{{ucwords('item')}}</th>
                     <th scope="col">{{ucwords('actividad')}}</th>
                     <th scope="col">{{ucwords('fecha')}}</th>
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach ($activitys as $activity)
+                  @foreach ($activitys as $key => $activity)
                     <tr>
                       <td>
-                        {{$activity->nameUser}}
-                        {{$activity->lastnameUser}}
+                        {{$key +1}}
                       </td>
                       <td>
                         {{$activity->activity}}

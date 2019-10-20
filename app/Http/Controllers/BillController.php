@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Activity;
 use App\Bill;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -62,12 +63,16 @@ class BillController extends Controller
     {
         // $this->validation($request, null);
         $bills = new Bill;
+        $activity = new Activity;
+        $activity->id_user = $request->id_user;
+        $activity->activity = 'Proceso de factura #'.$request->id_bill_temporal;
         $bills->id_user = $request->id_user;
         $bills->id_client = $request->id_client;
         $bills->id_bill_temporal = $request->id_bill_temporal;
         $bills->id_store = $request->id_store;
         $bills->status = $request->status;
         $bills->save();
+        $activity->save();
         return response()->json($bills);
     }
     /**

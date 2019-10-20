@@ -54,7 +54,7 @@
                         {{ trans('admin.'.$user->rol_user) }}
                       </td>
                       <td>
-                        <a href="{{ route('activity',1) }}">Ver</a>
+                        <a href="{{ route('activity',$user->id) }}">Ver</a>
                       </td>
                       <td>
                         <form action="{{route('employee.destroy', $user->id)}}" method="POST">

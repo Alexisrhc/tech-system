@@ -29,6 +29,7 @@ class ActivityController extends Controller
         	'users.id'
         )
         ->where('id_user',$id)
+        ->orderBy('id_activity','DESC')
     	->paginate(10);
     	return view('activity.show', compact('activitys'));
     }

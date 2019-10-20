@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Activity;
 use App\Client;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -71,6 +73,10 @@ class ClientController extends Controller
         $client->address = $request->address;
         $client->phone = $request->phone;
         $client->save();
+        $activity = new Activity;
+        $activity->id_user = Auth::user()->id;
+        $activity->activity = 'Agrego Cliente '.$request->name .' '. $request->lastname;
+        $activity->save();
         return redirect('client')->with('success', 'Agregado exitosamente');
     }
 
@@ -116,6 +122,11 @@ class ClientController extends Controller
             'phone'=> $request->phone,
             'address'=> $request->address
         ]);
+        $activity = new Activity;
+        $activity->id_user = Auth::user()->id;
+        $activity->activity = 'Modifico Cliente '.$request->name.' '.$request->lastname;
+        $activity->save();
+
         return redirect('client')->with('success', 'Modificado exitosamente');
     }
 
@@ -127,7 +138,12 @@ class ClientController extends Controller
      */
     public function destroy($id)
     {
+        $user = DB::table('clients')->where('id_client', $id)->first();
         DB::table('clients')->where('id_client', $id)->delete();
+        $activity = new Activity;
+        $activity->id_user = Auth::user()->id;
+        $activity->activity = 'Elimino Cliente '.$user->name.' '.$user->lastname;
+        $activity->save();
         return redirect('client')->with('success', 'Eliminado exitosamente');
     }
 }
