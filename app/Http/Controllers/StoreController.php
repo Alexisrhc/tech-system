@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Store;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
@@ -30,6 +31,11 @@ class StoreController extends Controller
     {
         $stores = DB::table('stores')->paginate(10);
         return view('store.index', ['stores' => $stores]);
+    }
+
+    public function selectStore () {
+        $stores = DB::table('stores')->get();
+        return response()->json($stores);
     }
 
     /**
@@ -65,9 +71,11 @@ class StoreController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
-        //
+        $store = DB::table('stores')->where('id_store', $id)->first();
+        $request->session()->push('store', $store);
+        return response()->json($store);
     }
 
     /**

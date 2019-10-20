@@ -1,6 +1,9 @@
 <?php
 
 Auth::routes();
+Route::get('/selectStore', 'StoreController@selectStore')->name('selectStore');
+Route::get('/store/{id}', 'StoreController@show')->name('store');
+
 Route::middleware(['guest'])->group(function () {
     Route::get('/', function () {return view('auth.login');});
     Route::get('/login', function(){return view('auth.login');})->name('login');
@@ -47,7 +50,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/imprimir/{id}', 'PrintedInvoiceController@imprimir')->name('printed');
 
 
-
+    Route::put('/productQuantity/{id}', 'ProductController@updateQuantity')->name('productQuantity');
 
     // Route::get('/register', function(){return view('auth.login');})->name('register');
 });

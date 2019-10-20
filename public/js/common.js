@@ -50,6 +50,18 @@ export const common = {
 
 		return table;
 	},
+
+	/*
+	 * Description
+	 */
+
+	dynamicSelect (data, classCss) {
+		let store = '';
+		data.forEach(elemet => {
+			store += `<option value="${elemet.id_store}"> ${elemet.name.toUpperCase()}</option>`
+		})
+		return store
+	},
 	/**
 	 * Obtener Informacion
 	 */

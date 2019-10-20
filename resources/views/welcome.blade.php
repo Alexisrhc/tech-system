@@ -3,9 +3,6 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="card shadow">
-            <div class="card-header border-0">
-              <h3 class="mb-0">{{ ucwords('') }}</h3>
-            </div>
             <div class="card-body pt-0 pt-md-4">
             	<h3 class="mb-4">{{ ucwords('datos del cliente:') }}</h3>
             	<div class="row mb-2">
@@ -150,10 +147,13 @@
     <input type="hidden" id="user_session" value="{{ Auth::user()->id }}">
     <input type="hidden" id="id_bill_temporal" value="">
     <input type="hidden" id="id_client" value="">
+    @if(Session::has('store'))
+    	<input type="text" id="id_store" value="{{ Session::get('store')[0]->id_store }}">
+    @endif
     {{-- modal --}}
 
-	<div class="modal fade bd-example-modal-lg " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered modal-lg">
+	<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
 		    <div class="modal-content">
 		    	<div class="modal-header">
 		    		<h4 class="modal-title">Lista de productos</h4>
@@ -193,20 +193,20 @@
 	 * Listar productos en la tabla productos
 	 */
 	$( "#click" ).click(() => {
-		let dataUrl = {
-			url: 'listproduct/',
-			data: {}
-		}
-		getTableProduct(dataUrl)
+		getTableProduct()
 	})
 
 	/*
 	 * obtener tabla con productos
 	 */
-	function getTableProduct (url) {
+	function getTableProduct () {
+		let url = {
+			url: 'listproduct/',
+			data: {}
+		}
 		common.getData(url)
 			.then(res => {
-				let header = ['id_product','serial_product', 'model', 'name', 'price', 'add'];
+				let header = ['id_product','serial_product', 'model', 'name', 'price','quantity', 'add'];
 		    	let table = common.dynamicTable(header, res, 'id_product')
 		        $("#table-product").html(table)
 			})
@@ -218,11 +218,11 @@
 	/*
 	 * funcion para cancelar factura
 	 */
-	 $( "#cancel_bill" ).click(() => {
-		let data = {
-			status: 'cancelled'
-		}
-		common.updateData(['bill-temporal', $('#id_bill_temporal').val()], data)
+	$( "#cancel_bill" ).click(() => {
+	 	let data = {
+	 		status: 'cancelled'
+	 	}
+	 	common.updateData(['bill-temporal', $('#id_bill_temporal').val()], data)
 			.then(res => {
 				getDataBill_Details()
 			})
@@ -280,7 +280,7 @@
 			.then(res => {
 				if (res) {
 					products = res
-					let header = ['index','serial_product', 'model', 'name', 'price','quantity','price_total', 'delete', 'total'];
+					let header = ['index','serial_product', 'model', 'name', 'price','quantity','price_total', 'delete'];
 					let table = common.dynamicTable(header, res, 'id_bill_detail')
 					$("#table-product-details").html(table)
 				}
@@ -305,12 +305,12 @@
 			data: common.paramsSearch(valueSearch, value)
 		}
 		setTimeout(() => {
-			getTableProduct(url)
+			getTableProduct()
 		}, 200)
 	})
 
 	/**
-	 * Description
+	 * guarda el detalles del producto al agregarlo a la factura
 	 */
 	$(document).on("click","#save_key", function() {
 		let id_product = $(this).val()
@@ -345,16 +345,16 @@
 			id_bill_temporal: $('#id_bill_temporal').val(),
 			id_user	: $('#user_session').val(),
 			id_client: $('#id_client').val(),
+			id_store: $('#id_client').val(),
 			status: 'pendind'
 		}
 		common.postData('bill', data)
 			.then(res => {
-				// location.href = 'printed-invoice/'+res.id_bill_temporal
 				products.forEach(element => {
 					// console.log(element)
 					common.updateData(
 						[
-							'product',
+							'productQuantity',
 							element['id_product']
 						],
 						{
@@ -364,10 +364,9 @@
 						}
 					)
 					.then(res => {
-						console.log(res)
 					})
 				})
-				// console.log('priented');
+				location.href = 'printed-invoice/'+res.id_bill_temporal
 			})
 	})
 	getDataBill_Details()

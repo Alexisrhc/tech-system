@@ -128,7 +128,6 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $this->validation($request, $id);
-        return response()->json($inputs);
          DB::table('products')->where('id_product', $id)->update([
             'code_product' => $request->code_product,
             'serial_product' => $request->serial_product,
@@ -146,30 +145,15 @@ class ProductController extends Controller
      */
     public function updateQuantity(Request $request, $id)
     {
-        $this->validation($request, $id);
-        $inputs = $request->all();
-        foreach ($inputs as $key => $value) {
-            if (isset($inputs[$key]) && $inputs[$key] !== null) {
-                DB::table('products')->where('id_product', $id)
-                ->update([
-                    $key => $inputs[$key]
-                ]);
-            }
-        }
-        // return response()->json($inputs);
-        //  DB::table('products')->where('id_product', $id)->update([
-        //     'code_product' => $request->code_product,
-        //     'serial_product' => $request->serial_product,
-        //     'smart_card' => $request->smart_card,
-        //     'model'=> $request->model,
-        //     'name'=> $request->name,
-        //     'description'=> $request->description,
-        //     'quantity'=> $request->quantity,
-        //     'price'=> $request->price,
-        // ]);
-        return redirect('product')->with('success', 'Modificado exitosamente');
-    }
+        $products = DB::table('products')->where('id_product', $id)->first();
+        $request->quantity = $products->quantity - $request->quantity;
 
+        DB::table('products')->where('id_product', $id)
+            ->update([
+                'quantity' => $request->quantity
+            ]);
+        return response()->json('update successfull');
+    }
     /**
      * Remove the specified resource from storage.
      *

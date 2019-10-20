@@ -76,6 +76,15 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                     </div>
+                    <select type="text" class="form-control" id="id_store">
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group mb-3">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                    </div>
                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Correo Electronico">
 
                     @error('email')
@@ -101,7 +110,7 @@
                 </div>
 
                 <div class="text-center">
-                  <button type="submit" class="btn btn-primary">
+                  <button type="submit" class="btn btn-primary" id="login_store">
                         {{ __('Inicar') }}
                     </button>
 
@@ -153,6 +162,29 @@
         token: "ee6fab19c5a04ac1a32a645abde4613a",
         application: "argon-dashboard-free"
       });
+  </script>
+  @section('script')
+  <script type="module">
+
+    //login_store
+    $(document).on("click","#login_store", async function() {
+      let id_store = $('#id_store').val()
+      let url = {
+        url:'store/'+id_store
+      }
+      await common.getData(url)
+    })
+
+  import { common } from './js/common.js';
+    async function getStore() {
+      let url = {
+        url: 'selectStore'
+      }
+      let store = await common.getData(url)
+      let select = common.dynamicSelect(store)
+      $("#id_store").html(select)
+    }
+    getStore()
   </script>
 </body>
 </html>
