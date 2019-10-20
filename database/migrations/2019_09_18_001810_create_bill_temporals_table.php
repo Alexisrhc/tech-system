@@ -15,7 +15,7 @@ class CreateBillTemporalsTable extends Migration
     {
         Schema::create('bill_temporals', function (Blueprint $table) {
             $table->bigIncrements('id_bill_temporal');
-            $table->enum('status', ['pendind','paid','cancelled']);
+            $table->enum('status', ['pendind','paid','cancelled','active'])->default('active');
             $table->timestamps();
             // debe estar antes de crearse la relacion
         });

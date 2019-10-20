@@ -39,7 +39,7 @@ class BillTemporalController extends Controller
         $bill = $bills->orderBy('id_bill_temporal', 'desc')
             ->limit(1)
             ->first();
-        if (isset($bill->status) && $bill->status === 'pendind') {
+        if (isset($bill->status) && $bill->status === 'active') {
             return response()->json($bill);
         }
         $bills->status = $request->status;

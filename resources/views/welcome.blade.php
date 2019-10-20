@@ -252,7 +252,7 @@
 				$('#phone').val(res[0].phone)
 				$('#address').val(res[0].address)
 				let data = {
-					status: 'pendind',
+					status: 'active',
 					date: common.formatDate()
 				}
 				common.postData('bill-temporal', data)
@@ -365,6 +365,19 @@
 					)
 					.then(res => {
 					})
+
+					common.updateData(
+						[
+							'bill-temporal',
+							data.id_bill_temporal
+						],
+						{
+							status: 'pendind',
+						}
+					)
+					.then(res => {
+					})
+
 				})
 				location.href = 'printed-invoice/'+res.id_bill_temporal
 			})

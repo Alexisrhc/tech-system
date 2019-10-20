@@ -56,10 +56,30 @@ class BillDetailsController extends Controller
     public function show($id)
     {
         $bills = DB::table('products')
-            ->select('id_bill_detail','products.id_product','products.serial_product','products.smart_card','products.model','products.name','products.description','products.price','bill_details.quantity')
-            ->join('bill_details', 'bill_details.id_product', '=', 'products.id_product')
-            ->join('bill_temporals', 'bill_details.id_bill_temporal', '=', 'bill_temporals.id_bill_temporal')
-            ->where('bill_temporals.status', 'pendind')
+            ->select(
+                'id_bill_detail',
+                'products.id_product',
+                'products.serial_product',
+                'products.smart_card',
+                'products.model',
+                'products.name',
+                'products.description',
+                'products.price',
+                'bill_details.quantity'
+            )
+            ->join(
+                'bill_details',
+                'bill_details.id_product',
+                '=',
+                'products.id_product'
+            )
+            ->join(
+                'bill_temporals',
+                'bill_details.id_bill_temporal',
+                '=',
+                'bill_temporals.id_bill_temporal'
+            )
+            ->where('bill_temporals.status', 'active')
             ->where('bill_details.id_bill_temporal', '=', $id)
             ->get();
 
