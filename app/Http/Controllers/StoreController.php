@@ -17,6 +17,7 @@ class StoreController extends Controller
         }
         $validator = $request->validate([
             'name' => 'required',
+            'phone' => 'required',
             'address' => 'required'
         ]);
         return $validator;
