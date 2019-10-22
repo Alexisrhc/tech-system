@@ -21,7 +21,7 @@
 											<span class="input-group-text">
 												<img src="{{ asset('assets/img/svg/code.svg') }}" width="18px" class="ml-2 mr-2">
 											</span>
-											<input style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" id="code_product" type="text" class="form-control @error('code_product') is-invalid @enderror" name="code_product" value="{{ old('code_product') }}"  placeholder="{{ ucwords('código producto') }}">
+											<input style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" id="code_product" type="text" class="form-control @error('code_product') is-invalid @enderror" name="code_product" value="{{ old('code_product') }}"  placeholder="{{ ucwords('código') }}">
 
 											@error('code_product')
 												<span class="invalid-feedback text-center" role="alert">
@@ -44,7 +44,7 @@
 											<span class="input-group-text">
 												<img src="{{ asset('assets/img/svg/code.svg') }}" width="18px" class="ml-2 mr-2">
 											</span>
-											<input style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" id="serial_product" type="text" class="form-control @error('serial_product') is-invalid @enderror" name="serial_product" value="{{ old('serial_product') }}"  placeholder="{{ ucwords('serial producto') }}">
+											<input style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" id="serial_product" type="text" class="form-control @error('serial_product') is-invalid @enderror" name="serial_product" value="{{ old('serial_product') }}"  placeholder="{{ ucwords('serial') }}">
 
 											@error('serial_product')
 												<span class="invalid-feedback text-center" role="alert">
@@ -89,7 +89,7 @@
 											<span class="input-group-text">
 												<img src="{{ asset('assets/img/svg/code.svg') }}" width="18px" class="ml-2 mr-2">
 											</span>
-											<input style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" id="model" type="text" class="form-control @error('model') is-invalid @enderror" name="model" value="{{ old('model') }}" placeholder="{{ ucwords('modelo:') }}">
+											<input style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" id="model" type="text" class="form-control @error('model') is-invalid @enderror" name="model" value="{{ old('model') }}" placeholder="{{ ucwords('modelo') }}">
 											@error('model')
 												<span class="invalid-feedback text-center" role="alert">
 													<strong>{{ $message }}</strong>
@@ -111,7 +111,7 @@
 											<span class="input-group-text">
 												<img src="{{ asset('assets/img/svg/single-folded.svg') }}" width="18px" class="ml-2 mr-2">
 											</span>
-											<input style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="{{ ucwords('nombre del producto') }}">
+											<input style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="{{ ucwords('nombre') }}">
 
 											@error('name')
 												<span class="invalid-feedback text-center" role="alert">
@@ -136,7 +136,7 @@
 													<img src="{{ asset('assets/img/svg/single-folded.svg') }}" width="18px" class="ml-2 mr-2">
 												</span>
 											</div>
-											<input style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" id="description" type="description" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('description') }}" placeholder="{{ ucwords('descripción del producto') }}">
+											<input style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" id="description" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('description') }}" placeholder="{{ ucwords('descripción') }}">
 											@error('description')
 												<span class="invalid-feedback text-center" role="alert">
 													<strong>{{ $message }}</strong>
@@ -160,7 +160,7 @@
 													<img src="{{ asset('assets/img/svg/layers-3_primary.svg') }}" width="18px" class="ml-2 mr-2">
 												</span>
 											</div>
-											    <input class="form-control" id="quantity" type="number" class="form-control @error('quantity') is-invalid @enderror" name="quantity" placeholder="CANTIDAD" value="{{ old('quantity') }}" />
+											<input id="quantity" type="text" class="form-control @error('quantity') is-invalid @enderror" name="quantity" value="{{ old('quantity') }}" placeholder="CANTIDAD"/>
 											@error('quantity')
 												<span class="invalid-feedback text-center" role="alert">
 													<strong>{{ $message }}</strong>
@@ -182,7 +182,7 @@
 											<div class="input-group-prepend">
 												<img src="{{ asset('assets/img/svg/dollar.svg') }}" width="20px" class="ml-3 mr-2 mt-2 mb-2">
 											</div>
-											<input id="price" type="text" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}" placeholder="{{ ucwords('precio del producto') }}"/>
+											<input id="price" type="text" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}" placeholder="PRECIO"/>
 											@error('price')
 												<span class="invalid-feedback text-center" role="alert">
 													<strong>{{ $message }}</strong>

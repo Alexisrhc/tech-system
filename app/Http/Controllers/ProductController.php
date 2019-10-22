@@ -23,9 +23,13 @@ class ProductController extends Controller
             $unique = 'unique:products|required';
         }
         $validator = $request->validate([
-            // 'code_product' => $unique,
+            'code_product' => 'required',
             'serial_product' => 'required',
             'name' => 'required',
+            'model' => 'required',
+            'quantity' => 'required',
+            'price' => 'required',
+
         ]);
         return $validator;
     }
@@ -83,14 +87,14 @@ class ProductController extends Controller
         // Validate the request...
         $this->validation($request, null);
         $product = new Product;
-        $product->serial_product = $request->serial_product;
-        $product->code_product = $request->code_product;
-        $product->smart_card = $request->smart_card;
-        $product->model = $request->model;
-        $product->name = $request->name;
-        $product->description = $request->description;
-        $product->quantity = $request->quantity;
-        $product->price = $request->price;
+        $product->serial_product    = $request->serial_product;
+        $product->code_product      = $request->code_product;
+        $product->smart_card        = $request->smart_card;
+        $product->model             = $request->model;
+        $product->name              = $request->name;
+        $product->description       = $request->description;
+        $product->quantity          = $request->quantity;
+        $product->price             = $request->price;
         $product->save();
         return redirect('product')->with('success', 'Agregado exitosamente');
     }

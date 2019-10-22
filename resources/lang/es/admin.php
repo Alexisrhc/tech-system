@@ -8,6 +8,4 @@ return [
     'Empleado' => 'Empleado',
     'technical' => 'Técnico',
     'Técnico' => 'Técnico',
-    'id_product' => 'mamalo',
-
 ];

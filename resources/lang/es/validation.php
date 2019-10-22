@@ -183,12 +183,14 @@ return [
         'price'                 => 'precio',
         'code'                  => 'código',
         'model'                 => 'modelo',
-        'serial_product'        => 'serial producto',
+        'serial_product'        => 'serial',
         'business_name'         => 'razón social',
         'bank'                  => 'banco',
         'bank_account'          => 'número de cuenta',
         'name_bank_account'     => 'nombre de cuenta',
         'id_bank_account'       => 'c.i',
+        'quantity'              => 'cantidad',
+        'code_product'          => 'código',
 
 
     ],
