@@ -22,6 +22,7 @@ class CreateProvidersTable extends Migration
             $table->string('address');
             $table->string('phone');
             $table->string('email');
+            $table->string('product');
 
             $table->string('bank');
             $table->string('bank_account');
