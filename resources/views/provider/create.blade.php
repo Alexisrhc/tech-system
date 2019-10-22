@@ -143,6 +143,24 @@
 										</div>
 									</div>
 								</div>
+							</div>
+
+							<div class="col-12">
+								<div class="form-group row">
+									<label for="product" class="col-sm-2 col-form-label">
+										{{ ucwords('producto:') }}
+									</label>
+									<div class="col-sm-10">
+										<div class="input-group input-group-alternative">
+											<input style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" type="product" class="form-control @error('product') is-invalid @enderror" name="product" value="{{ old('product') }}" placeholder="producto">
+											@error('product')
+												<span class="invalid-feedback text-center" role="alert">
+													<strong>{{ $message }}</strong>
+												</span>
+											@enderror
+										</div>
+									</div>
+								</div>
 							<hr class="my-3">
 							</div>
 

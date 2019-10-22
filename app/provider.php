@@ -24,7 +24,8 @@ class provider extends Model
     	'bank',
     	'bank_account',
     	'name_bank_account',
-    	'id_bank_account'
+    	'id_bank_account',
+        'product'
     ];
 
 }

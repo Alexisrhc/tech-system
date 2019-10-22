@@ -191,6 +191,7 @@ return [
         'id_bank_account'       => 'c.i',
         'quantity'              => 'cantidad',
         'code_product'          => 'código',
+        'product'               => 'producto',
 
 
     ],

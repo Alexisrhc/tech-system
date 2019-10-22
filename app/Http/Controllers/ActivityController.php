@@ -31,6 +31,12 @@ class ActivityController extends Controller
         ->where('id_user',$id)
         ->orderBy('id_activity','DESC')
     	->paginate(10);
+
+
+
+        if ($activitys[0] == null) {
+            abort(419);
+        }
     	return view('activity.show', compact('activitys'));
     }
 }

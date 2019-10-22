@@ -40,7 +40,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = DB::table('products')->paginate(10);
+        $products = DB::table('products')->paginate(10);//->where('status',1)
         return view('product.index', compact('products'));
     }
     /**
@@ -95,6 +95,7 @@ class ProductController extends Controller
         $product->description       = $request->description;
         $product->quantity          = $request->quantity;
         $product->price             = $request->price;
+        $product->status            = $request->status;
         $product->save();
         return redirect('product')->with('success', 'Agregado exitosamente');
     }
@@ -141,6 +142,7 @@ class ProductController extends Controller
             'description'=> $request->description,
             'quantity'=> $request->quantity,
             'price'=> $request->price,
+            'status'=> $request->status,
         ]);
         return redirect('product')->with('success', 'Modificado exitosamente');
     }
@@ -166,7 +168,8 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('products')->where('id_product', $id)->delete();
-        return redirect('product')->with('success', 'Eliminado exitosamente');
+        update($id);
+        // DB::table('products')->where('id_product', $id)->delete();
+        // return redirect('product')->with('success', 'Eliminado exitosamente');
     }
 }

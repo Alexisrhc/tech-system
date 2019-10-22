@@ -28,10 +28,6 @@ class PrintedInvoiceController extends Controller
      */
     public function imprimir(Request $request, $id){
         // aqui actualizamos el estado de la factura enviada a imprimir
-
-
-
-
         $bills = DB::table('products')
             ->select(
                 'id_bill_detail',
@@ -39,6 +35,7 @@ class PrintedInvoiceController extends Controller
                 'clients.lastname',
                 'clients.email',
                 'clients.address',
+                'clients.document',
                 'products.id_product',
                 'products.serial_product',
                 'products.smart_card',

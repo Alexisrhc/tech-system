@@ -174,6 +174,10 @@
         	{{ strtoupper($bills[0]->lastname) }}
         </div>
         <div>
+        	<span>CEDULA</span>
+        	{{ strtoupper($bills[0]->document) }}
+        </div>
+        <div>
         	<span>DIRECCIÓN</span>
 	        {{ strtoupper($bills[0]->address) }}
 	    </div>
@@ -185,6 +189,10 @@
         	<span>FECHA</span>
         	{{ substr($bills[0]->created_at, 0, 10) }}
         </div>
+        <div>
+        	<span>FACTURA</span>
+        	{{ $bills[0]->id_bill_detail }}
+        </div>
       </div>
       <div id="project">
       	<div>
@@ -193,16 +201,20 @@
       </div>
       <div id="project">
       	<div>
+        	<span>EMPRESA</span>
+        	TECHNOLOGICALPROJECT C.A.
+      	</div>
+      	<div>
+        	<span>RIF</span>
+        	J-412902318
+      	</div>
+      	<div>
         	<span>TIENDA</span>
         	{{ $bills[0]->nameStore }}
       	</div>
       	<div>
         	<span>VENDEDOR</span>
         	{{ strtoupper($bills[0]->nameBill) }} {{ strtoupper($bills[0]->lastnameBill) }}
-      	</div>
-      	<div>
-        	<span>EMPRESA</span>
-        	TECHNOLOGICALPROJECT C.A.
       	</div>
       	<div>
         	<span>TELEFONO</span>
@@ -216,10 +228,6 @@
       	<div>
         	<span>E-MAIL</span>
         	VENTAS@TECHNOLOGICALPROJECT.COM
-      	</div>
-      	<div>
-        	<span>RIF</span>
-        	j-00000000-0
       	</div>
       </div>
     </header>

@@ -193,6 +193,33 @@
 								</div>
 							</div>
 						</div>
+
+						<div class="row mb-2">
+							<div class="col-12">
+								<div class="form-group row">
+									<label for="business_name" class="col-sm-3 col-form-label col-form-label-sm">
+										{{ ucwords('estado del producto:') }}
+									</label>
+									<div class="col-sm-9">
+										<div class="input-group input-group-alternative">
+											<div class="input-group-prepend">
+												<img src="{{ asset('assets/img/svg/single-folded.svg') }}" width="18px" class="ml-2 mr-2">
+											</div>
+											<select id="status" type="text" class="form-control @error('status') is-invalid @enderror" name="status" value="{{ old('status') }}" placeholder="PRECIO">
+												<option value="1">ACTIVO</option>
+												<option value="0">INACTIVO</option>
+											</select>
+											@error('status')
+												<span class="invalid-feedback text-center" role="alert">
+													<strong>{{ $message }}</strong>
+												</span>
+											@enderror
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
 						<div class="row mb-2">
 							<div class="col-12 text-right">
 								<button class="btn btn-success btn-sm">Agregar</button>

@@ -30,6 +30,7 @@ class ProviderController extends Controller
             'bank_account' => 'required',
             'name_bank_account' => 'required',
             'id_bank_account' => 'required',
+            'product' => 'required'
         ]);
         return $validator;
     }
@@ -71,6 +72,7 @@ class ProviderController extends Controller
         $provider->address = $request->address;
         $provider->phone = $request->phone;
         $provider->email = $request->email;
+        $provider->product = $request->product;
         $provider->bank = $request->bank;
         $provider->bank_account = $request->bank_account;
         $provider->name_bank_account = $request->name_bank_account;
@@ -120,6 +122,7 @@ class ProviderController extends Controller
             'address'=> $request->address,
             'phone'=> $request->phone,
             'email'=> $request->email,
+            'product'=> $request->product,
             'bank'=> $request->bank,
             'bank_account'=> $request->bank_account,
             'name_bank_account'=> $request->name_bank_account,
