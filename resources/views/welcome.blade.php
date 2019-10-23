@@ -178,6 +178,7 @@
 @section('script')
 <script type="module">
 	import { common } from './js/common.js';
+
 	async function dynamicSelectSeller() {
       let url = {
         url: 'selectSeller'
