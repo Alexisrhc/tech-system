@@ -96,7 +96,7 @@ class PrintedInvoiceController extends Controller
         $activity->save();
 
         # code...
-        $pdf = \PDF::loadView('printed-invoice.printed', compact('bills', 'total'));
+        $pdf = \PDF::loadView('printed-invoice.printed', compact('bills', 'total'))->setPaper('a4', 'landscape')->setWarnings(false)->save('myfile.pdf');
         // return $pdf->download('printed.pdf');
         return $pdf->stream('printed.pdf');
     }

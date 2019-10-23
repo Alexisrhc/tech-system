@@ -153,4 +153,10 @@ class SellerController extends Controller
         //mandar mensaje de succes
         return redirect('employee')->with('success', 'Eliminado exitosamente');
     }
+
+    public function selectSeller()
+    {
+        $sellers = DB::table('users')->get();
+        return response()->json($sellers);
+    }
 }

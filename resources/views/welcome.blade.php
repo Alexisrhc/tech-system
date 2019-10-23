@@ -71,28 +71,27 @@
 				</div>
             </div>
             <div class="card-body pt-0 pt-md-4" id="services">
-            	{{-- <div id="">
+{{--             	<div id="">
             		<button class="btn btn-sm btn-success">{{ ucwords('agregar servicios') }}</button>
             	</div> --}}
-            	<div style="display: none">
-	            	<h3 class="mb-4">{{ ucwords('datos de servicio:') }}</h3>
+            	<div style="display: block;">
+	            	<h3 class="mb-4">{{ ucwords('vendido:') }}</h3>
 	            	<div class="row mb-2">
-				        {{-- SERVICIO --}}
-						<div class="col-sm-12 col-md-12 col-xl-4 text-center">
-							<label class="small">
-								{{ ucwords('tipo de servicio:') }}
-							</label>
-		            		<div class="input-group mb-3">
-			            			<select class="form-control form-control-sm" name="type_document" id="type_document">
-			            				<option hidden>SELECCIONE</option>
-										<option value="">VENTAS</option>
-										<option value="">INSTALACIÓN</option>
-										<option value="">REPARACIÓN</option>
-									</select>
-				            </div>
-				        </div>
+	            		<div class="col-12">
+								<div class="form-group row">
+									<label for="business_name" class="col-sm-3 col-form-label col-form-label-sm">
+										{{ ucwords('Vendedor:') }}
+									</label>
+									<div class="col-sm-9">
+										<div class="input-group input-group-alternative">
+											<select class="form-control" name="id_seller" id="id_seller">
+											</select>
+										</div>
+									</div>
+								</div>
+							</div>
 				        {{-- TIENDA --}}
-				        <div class="col-sm-12 col-md-12 col-xl-4 text-center">
+				        {{-- <div class="col-sm-12 col-md-12 col-xl-4 text-center">
 							<label class="small">
 								{{ ucwords('tienda:') }}
 							</label>
@@ -102,16 +101,7 @@
 										<option value="">TIENDA</option>
 									</select>
 				            </div>
-				        </div>
-				        {{-- EMPLEADO --}}
-				        <div class="col-sm-12 col-md-12 col-xl-4 text-center">
-							<label class="small">
-								{{ ucwords('empleado:') }}
-							</label>
-							<div class="input-group input-group-alternative">
-								<input type="text" readonly class="form-control-plaintext text-center form-control-sm" name="employee" value="{{ Auth::user()->name .' '.Auth::user()->lastname }}" >
-							</div>
-						</div>
+				        </div> --}}
 					</div>
             	</div>
 			</div>
@@ -144,7 +134,7 @@
           </div>
         </div>
     </div>
-    <input type="hidden" id="user_session" value="{{ Auth::user()->id }}">
+    <input type="hidden" id="id_seller" value="{{ Auth::user()->id }}">
     <input type="hidden" id="id_bill_temporal" value="">
     <input type="hidden" id="id_client" value="">
     @if(Session::has('store'))
@@ -188,6 +178,15 @@
 @section('script')
 <script type="module">
 	import { common } from './js/common.js';
+	async function dynamicSelectSeller() {
+      let url = {
+        url: 'selectSeller'
+      }
+      let seller = await common.getData(url)
+      let select = common.dynamicSelectSeller(seller)
+      $("#id_seller").html(select)
+    }
+
 	let products = []
 	/**
 	 * Listar productos en la tabla productos
@@ -237,7 +236,6 @@
 			})
 
 	})
-
 
 	/**
 	 * obtener datos del cliente por CEDULA en el campo de cedula (enter == key(13))
@@ -293,6 +291,7 @@
 				}
 			})
 	}
+
 	/**
 	 * buscar producto por clave o por nombre
 	 */
@@ -350,7 +349,7 @@
 	$(document).on("click","#process_bill", function() {
 		let data = {
 			id_bill_temporal: $('#id_bill_temporal').val(),
-			id_user	: $('#user_session').val(),
+			id_user	: $('#id_seller').val(),
 			id_client: $('#id_client').val(),
 			id_store: $('#id_store').val(),
 			status: 'pendind'
@@ -389,6 +388,13 @@
 				location.href = 'printed-invoice/'+res.id_bill_temporal
 			})
 	})
+
+	/*
+	 * obtener los empledos registrados en el sistema
+	 */
+
+
+    dynamicSelectSeller()
 	getDataBill_Details()
 
 </script>

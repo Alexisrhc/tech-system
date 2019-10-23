@@ -62,6 +62,14 @@ export const common = {
 		})
 		return store
 	},
+
+	dynamicSelectSeller (data, classCss) {
+		let seller = '';
+		data.forEach(elemet => {
+			seller += `<option value="${elemet.id}"> ${elemet.name.toUpperCase()} ${elemet.lastname.toUpperCase()}</option>`
+		})
+		return seller
+	},
 	/**
 	 * Obtener Informacion
 	 */

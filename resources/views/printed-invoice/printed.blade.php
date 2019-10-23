@@ -190,9 +190,24 @@
         	{{ substr($bills[0]->created_at, 0, 10) }}
         </div>
         <div>
-        	<span>FACTURA</span>
-        	{{ $bills[0]->id_bill_detail }}
+        	<span>COMPROBANTE</span>
+        	# {{ $bills[0]->id_bill_detail }}
         </div>
+      </div>
+      <div id="project">
+      	<div>
+        	<span>&nbsp;</span>
+      	</div>
+      </div>
+      <div id="project">
+      	<div>
+        	<span>&nbsp;</span>
+      	</div>
+      </div>
+      <div id="project">
+      	<div>
+        	<span>&nbsp;</span>
+      	</div>
       </div>
       <div id="project">
       	<div>
@@ -236,6 +251,8 @@
         <thead>
           <tr>
             <th class="service">ITEM</th>
+            <th class="service">SERIAL</th>
+            <th class="service">SMART CARD</th>
             <th class="service">MODELO</th>
             <th class="desc">DESCRIPCIÓN</th>
             <th>CANTIDAD</th>
@@ -247,6 +264,12 @@
         	@foreach ($bills as $index => $bill)
         		<tr>
         			<td class="service">{{  $index + 1 }}</td>
+        			<td>
+        				{{$bill->serial_product}}
+        			</td>
+        			<td>
+        				{{$bill->smart_card}}
+        			</td>
         			<td>
         				{{$bill->model}}
         			</td>
@@ -265,7 +288,7 @@
         		</tr>
 			@endforeach
 			<tr>
-	            <td colspan="5" class="grand total">TOTAL A PAGAR</td>
+	            <td colspan="7" class="grand total">TOTAL A PAGAR</td>
 	            <td class="grand total">{{ $total }}</td>
 	        </tr>
         </tbody>

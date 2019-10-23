@@ -1,6 +1,7 @@
 <?php
 Route::get('/store/create', 'StoreController@create');
 Route::get('/selectStore', 'StoreController@selectStore')->name('selectStore');
+Route::get('/selectSeller', 'SellerController@selectSeller')->name('selectSeller');
 Route::get('/store/{id}', 'StoreController@show')->name('store');
 
 Auth::routes();
@@ -44,6 +45,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/bill-temporal', 'BillTemporalController');
     // Route bill_detail
     Route::resource('/bill-details', 'BillDetailsController');
+    // Route empleados
+
     // Route printed-invoice
     Route::get('/printed-invoice/{id}', 'PrintedInvoiceController@index')->name('printedinvoice');
     // Route::resource('/printed-invoice', 'PrintedInvoiceController');
