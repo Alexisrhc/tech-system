@@ -41,7 +41,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $clients = DB::table('clients')->paginate(10);
+        $clients = DB::table('clients')->where('delete', 0)->paginate(10);
         return view('client.index', ['clients' => $clients]);
     }
 
@@ -72,6 +72,7 @@ class ClientController extends Controller
         $client->email = $request->email;
         $client->address = $request->address;
         $client->phone = $request->phone;
+        $client->delete = 0;
         $client->save();
         $activity = new Activity;
         $activity->id_user = Auth::user()->id;
@@ -120,7 +121,8 @@ class ClientController extends Controller
             'lastname'=> $request->lastname,
             'email'=> $request->email,
             'phone'=> $request->phone,
-            'address'=> $request->address
+            'address'=> $request->address,
+            'delete'=> 0
         ]);
         $activity = new Activity;
         $activity->id_user = Auth::user()->id;
@@ -139,7 +141,12 @@ class ClientController extends Controller
     public function destroy($id)
     {
         $user = DB::table('clients')->where('id_client', $id)->first();
-        DB::table('clients')->where('id_client', $id)->delete();
+
+        DB::table('clients')->where('id_client', $id)
+            ->update([
+                'status' => '1'
+            ]);
+
         $activity = new Activity;
         $activity->id_user = Auth::user()->id;
         $activity->activity = 'Elimino Cliente '.$user->name.' '.$user->lastname;

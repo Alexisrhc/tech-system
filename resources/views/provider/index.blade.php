@@ -30,6 +30,7 @@
               <table class="table align-items-center table-flush">
                 <thead class="thead-light">
                   <tr>
+                    <th scope="col">{{ucwords('producto')}}</th>
                     <th scope="col">{{ucwords('rif')}}</th>
                     <th scope="col">{{ucwords('razon social')}}</th>
                     <th scope="col">{{ucwords('contacto')}}</th>
@@ -45,6 +46,9 @@
                     <tr>
                       <td>
                         {{$provider->rif}}
+                      </td>
+                      <td>
+                        {{$provider->product}}
                       </td>
                       <td>
                         {{ ucwords($provider->business_name)}}

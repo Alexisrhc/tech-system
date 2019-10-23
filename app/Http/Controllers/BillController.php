@@ -39,6 +39,7 @@ class BillController extends Controller
                 'clients.id_client',
                 'bills.id_client',
             )
+            ->where('bills.delete',0)
             ->paginate(10);
         return view('bill.index', compact('bills'));
     }
@@ -71,6 +72,7 @@ class BillController extends Controller
         $bills->id_bill_temporal = $request->id_bill_temporal;
         $bills->id_store = $request->id_store;
         $bills->status = $request->status;
+        $bills->delete = 0;
         $bills->save();
         $activity->save();
         return response()->json($bills);
@@ -119,7 +121,11 @@ class BillController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('bills')->where('id_bill', $id)->delete();
+        DB::table('bills')->where('id_bill', $id)
+            ->update([
+                'delete' => '1'
+            ]);
+        // DB::table('bills')->where('id_bill', $id)->delete();
         return redirect('bill')->with('success', 'Eliminado exitosamente');
     }
 }

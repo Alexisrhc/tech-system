@@ -1,6 +1,17 @@
 @extends('layouts.appAdmin')
 @section('content')
 	<div class="row">
+    <div class="col-md-12">
+         @if(session()->has('success'))
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+              <span class="alert-inner--icon"><i class="ni ni-like-2"></i></span>
+              <span class="alert-inner--text"><strong>Exito!</strong> {{session()->get('success')}}</span>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+         @endif
+      </div>
 		<div class="col">
           <div class="card shadow">
             <div class="card-header border-0">
@@ -10,7 +21,6 @@
               <table class="table align-items-center table-flush">
                 <thead class="thead-light">
                   <tr>
-                    <th scope="col">ID</th>
                     <th scope="col">Fecha</th>
                     <th scope="col">Cliente</th>
                     <th scope="col">Usuario</th>
@@ -21,7 +31,6 @@
                 <tbody>
                 	@foreach($bills as $bill)
                     <tr>
-                      <td>{{ $bill->id_bill }}</td>
                       <td>{{ $bill->created_at }}</td>
                       <td>{{ $bill->nameClient }} {{ $bill->lastname }}</td>
                       <td>{{ $bill->nameUser }} {{ $bill->lastnameUser }}</td>
@@ -73,7 +82,7 @@
             <div class="card-footer py-4">
               <nav aria-label="...">
                 <ul class="pagination justify-content-center mb-0">
-                  {{ $bills->links() }}
+                  {{-- {{ $bills->links() }} --}}
                 </ul>
               </nav>
             </div>
