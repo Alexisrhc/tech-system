@@ -18,6 +18,7 @@ Route::middleware(['guest'])->group(function () {
 Route::middleware(['auth'])->group(function () {
     // Home
     Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/updatesql', 'HomeController@sqlUpdate')->name('home');
     // Client
     Route::resource('/client', 'ClientController');
     Route::get('/client', 'ClientController@index')->name('client');

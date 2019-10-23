@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -24,5 +25,16 @@ class HomeController extends Controller
     public function index()
     {
         return view('welcome');
+    }
+
+    public function sqlUpdate(){
+        DB::table('bills')
+            ->update([
+                'delete' => '0'
+            ]);
+        DB::table('clients')
+            ->update([
+                'delete' => '0'
+            ]);
     }
 }
