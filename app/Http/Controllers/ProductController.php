@@ -40,7 +40,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = DB::table('products')->paginate(10);//->where('status',1)
+        $products = DB::table('products')->where('status',1)->paginate(10);
         return view('product.index', compact('products'));
     }
     /**
@@ -48,16 +48,6 @@ class ProductController extends Controller
      */
     public function listProduct (Request $request) {
         if ($request) {
-            // foreach ($request->all() as $key => $value) {
-            //     if (isset($request[$key])) {
-            //         $products = DB::table('products')
-            //         ->orWhere($key, 'LIKE', "%$request[$key]%")->get();
-            //         return response()->json($products, 200);
-            //         /*
-            //          * y si solo busca por nombre de producto que es lo mas seguro que va a buscar!
-            //          */
-            //     }
-            // }
             $products = DB::table('products')
                     ->orWhere('code_product', 'LIKE', "%$request->code_product%")
                     ->orWhere('name', 'LIKE', "%$request->name%")->get();
@@ -168,8 +158,11 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        update($id);
+        DB::table('products')->where('id_product', $id)
+            ->update([
+                'status' => '0'
+            ]);
+        return redirect('product')->with('success', 'Eliminado exitosamente');
         // DB::table('products')->where('id_product', $id)->delete();
-        // return redirect('product')->with('success', 'Eliminado exitosamente');
     }
 }

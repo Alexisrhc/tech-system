@@ -40,7 +40,31 @@
 	                      	{{ $bill->status }}
 	                      </span>
 	                  </td>
-                      <td><a href="{{ route('printedinvoice' , $bill->id_bill_temporal) }}" class="btn btn-success btn-sm">Pre-visualizar</a></td>
+                    <td>
+                    <form action="{{route('bill.destroy', $bill->id_bill)}}" method="POST">
+                        <a href="{{ route('printedinvoice' , $bill->id_bill_temporal) }}" class="btn btn-success btn-sm">VER</a>
+                          <img src="{{ asset('assets/img/svg/ic_create_24px.svg') }}" width="18px">
+                        </a>
+                          @method('DELETE')
+                          @csrf
+                          <button class="btn btn-danger btn-sm">
+                            <img src="{{ asset('assets/img/svg/trash-simple.svg') }}" width="18px">
+                          </button>
+                        </form>
+
+                    </td>
+                      {{-- <td>
+                        <a href="{{ route('printedinvoice' , $bill->id_bill_temporal) }}" class="btn btn-success btn-sm">VER</a>
+                      </td>
+                      <td>
+                        <form action="" method="POST">
+                          @method('DELETE')
+                          @csrf
+                          <button class="btn btn-danger btn-sm">
+                            <img src="{{ asset('../assets/img/svg/trash-simple.svg') }}" width="18px">
+                          </button>
+                        </form>
+                      </td> --}}
                     </tr>
                     @endforeach
                 </tbody>

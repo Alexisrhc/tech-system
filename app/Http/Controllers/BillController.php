@@ -119,6 +119,7 @@ class BillController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('bills')->where('id_bill', $id)->delete();
+        return redirect('bill')->with('success', 'Eliminado exitosamente');
     }
 }

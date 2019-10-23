@@ -39,9 +39,10 @@
               <table class="table align-items-center table-flush">
                 <thead class="thead-light">
                   <tr>
-                    <th scope="col"> {{ ucwords('codigo producto')}} </th>
-                    <th scope="col"> {{ ucwords('serial producto')}} </th>
+                    <th scope="col"> {{ ucwords('codigo')}} </th>
+                    <th scope="col"> {{ ucwords('serial')}} </th>
                     <th scope="col"> {{ ucwords('smart card')}} </th>
+                    <th scope="col"> {{ ucwords('modelo')}} </th>
                     <th scope="col"> {{ ucwords('nombre')}} </th>
                     <th scope="col"> {{ ucwords('descripción')}} </th>
                     <th scope="col"> {{ ucwords('cantidad')}} </th>
@@ -60,6 +61,9 @@
                       </td>
                       <td>
                         {{ ucwords($product->smart_card)}}
+                      </td>
+                      <td>
+                        {{ ucwords($product->model)}}
                       </td>
                       <td>
                         {{ucwords(ucwords($product->name))}}
