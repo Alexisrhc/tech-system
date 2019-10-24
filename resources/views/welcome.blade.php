@@ -71,37 +71,46 @@
 				</div>
             </div>
             <div class="card-body pt-0 pt-md-4" id="services">
-{{--             	<div id="">
-            		<button class="btn btn-sm btn-success">{{ ucwords('agregar servicios') }}</button>
-            	</div> --}}
             	<div style="display: block;">
-	            	<h3 class="mb-4">{{ ucwords('vendido:') }}</h3>
-	            	<div class="row mb-2">
-	            		<div class="col-12">
-								<div class="form-group row">
-									<label for="business_name" class="col-sm-3 col-form-label col-form-label-sm">
-										{{ ucwords('Vendedor:') }}
-									</label>
-									<div class="col-sm-9">
-										<div class="input-group input-group-alternative">
-											<select class="form-control" name="id_seller" id="id_seller">
-											</select>
-										</div>
-									</div>
+            		<h3 class="mb-4">{{ ucwords('Sistema:') }}</h3>
+            		<div class="col-12">
+            			<div class="form-group row">
+            				<label for="business_name" class="col-sm-3 col-form-label col-form-label-sm">
+            					{{ ucwords('Tienda:') }}
+							</label>
+							<div class="col-sm-9">
+								<div class="input-group input-group-alternative">
+									<select class="form-control form-control-sm" name="id_store" id="id_store">
+									</select>
 								</div>
 							</div>
-				        {{-- TIENDA --}}
-				        {{-- <div class="col-sm-12 col-md-12 col-xl-4 text-center">
-							<label class="small">
-								{{ ucwords('tienda:') }}
+						</div>
+					</div>
+            		<div class="col-12">
+            			<div class="form-group row">
+            				<label for="business_name" class="col-sm-3 col-form-label col-form-label-sm">
+            					{{ ucwords('Vendedor:') }}
 							</label>
-		            		<div class="input-group mb-3">
-			            			<select class="form-control form-control-sm" name="type_document" id="type_document">
-			            				<option hidden>SELECCIONE</option>
-										<option value="">TIENDA</option>
+							<div class="col-sm-9">
+								<div class="input-group input-group-alternative">
+									<select class="form-control form-control-sm" name="id_seller" id="id_seller">
 									</select>
-				            </div>
-				        </div> --}}
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-12">
+            			<div class="form-group row">
+            				<label for="business_name" class="col-sm-3 col-form-label col-form-label-sm">
+            					{{ ucwords('Instalador:') }}
+							</label>
+							<div class="col-sm-9">
+								<div class="input-group input-group-alternative">
+									<select class="form-control form-control-sm" name="id_technical" id="id_technical">
+									</select>
+								</div>
+							</div>
+						</div>
 					</div>
             	</div>
 			</div>
@@ -137,9 +146,9 @@
     <input type="hidden" id="id_seller" value="{{ Auth::user()->id }}">
     <input type="hidden" id="id_bill_temporal" value="">
     <input type="hidden" id="id_client" value="">
-    @if(Session::has('store'))
+    {{-- @if(Session::has('store'))
     	<input type="hidden" id="id_store" value="{{ Session::get('store')[0]->id_store }}">
-    @endif
+    @endif --}}
     {{-- modal --}}
 
 	<div class="modal fade bd-example-modal-lg " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -179,14 +188,7 @@
 <script type="module">
 	import { common } from './js/common.js';
 
-	async function dynamicSelectSeller() {
-      let url = {
-        url: 'selectSeller'
-      }
-      let seller = await common.getData(url)
-      let select = common.dynamicSelectSeller(seller)
-      $("#id_seller").html(select)
-    }
+
 
 	let products = []
 	/**
@@ -353,6 +355,7 @@
 			id_user	: $('#id_seller').val(),
 			id_client: $('#id_client').val(),
 			id_store: $('#id_store').val(),
+			id_technical: $('#id_technical').val(),
 			status: 'pendind'
 		}
 		common.postData('bill', data)
@@ -395,8 +398,40 @@
 	 */
 
 
-    dynamicSelectSeller()
-	getDataBill_Details()
+	async function getStore() {
+      let url = {
+        url: 'selectStore'
+      }
+      let store = await common.getData(url)
+      let select = common.dynamicSelect(store)
+      $("#id_store").html(select)
+    }
+    getStore()
 
+
+
+    async function dynamicSelectSeller() {
+      let url = {
+        url: 'selectSeller'
+      }
+      let seller = await common.getData(url)
+      let select = common.dynamicSelectSeller(seller)
+      $("#id_seller").html(select)
+    }
+    dynamicSelectSeller()
+
+
+    async function getTechnical() {
+      let url = {
+        url: 'selectTechnical'
+      }
+      let Technical = await common.getData(url)
+      let select = common.getTechnical(Technical)
+      $("#id_technical").html(select)
+    }
+    getTechnical()
+
+
+	getDataBill_Details()
 </script>
 @endsection

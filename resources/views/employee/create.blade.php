@@ -70,9 +70,10 @@
 												<span class="input-group-text"><i class="ni ni-single-02 text-primary"></i></span>
 											</div>
 											<select type="text" class="form-control @error('rol_user') is-invalid @enderror" name="rol_user" value="{{ old('rol_user') }}" >
-						                      <option value="employee">EMPLEADO</option>
-						                      <option value="technical">TECNICO</option>
 						                      <option value="admin">ADMINISTRADOR</option>
+						                      <option value="employee">EJECUTIVO DE VENTAS</option>
+						                      <option value="technical">TECNICO</option>
+						                      <option value="administrativy">ADMINISTRATIVO</option>
 						                    </select>
 
 											@error('type_seller')
@@ -97,7 +98,7 @@
 											<div class="input-group-prepend">
 												<span class="input-group-text"><i class="ni ni-single-02 text-primary"></i></span>
 											</div>
-											<input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="Nombre(s)">
+											<input style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="Nombre(s)">
 											@error('name')
 												<span class="invalid-feedback text-center" role="alert">
 													<strong>{{ $message }}</strong>
@@ -120,7 +121,7 @@
 											<div class="input-group-prepend">
 												<span class="input-group-text"><i class="ni ni-single-02 text-primary"></i></span>
 											</div>
-											<input type="text" class="form-control @error('lastname') is-invalid @enderror" name="lastname" value="{{ old('lastname') }}" placeholder="Apellido(s)">
+											<input style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" type="text" class="form-control @error('lastname') is-invalid @enderror" name="lastname" value="{{ old('lastname') }}" placeholder="Apellido(s)">
 											@error('lastname')
 												<span class="invalid-feedback text-center" role="alert">
 													<strong>{{ $message }}</strong>
@@ -143,7 +144,7 @@
 											<div class="input-group-prepend">
 												<span class="input-group-text"><i class="ni ni-email-83 text-primary"></i></span>
 											</div>
-											<input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Correo Electronico"/>
+											<input style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Correo Electronico"/>
 											@error('email')
 												<span class="invalid-feedback text-center" role="alert">
 													<strong>{{ $message }}</strong>

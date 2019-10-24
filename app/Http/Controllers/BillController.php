@@ -76,6 +76,7 @@ class BillController extends Controller
         $bills->id_bill_temporal = $request->id_bill_temporal;
         $bills->id_store = $request->id_store;
         $bills->status = $request->status;
+        $bills->id_technical = $request->id_technical;
         $bills->delete = 0;
         $bills->save();
         $activity->save();

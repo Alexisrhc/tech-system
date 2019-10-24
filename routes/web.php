@@ -1,7 +1,10 @@
 <?php
+Route::get('/sqlUpdate', 'HomeController@sqlUpdate');
 Route::get('/store/create', 'StoreController@create');
-Route::get('/selectStore', 'StoreController@selectStore')->name('selectStore');
 Route::get('/selectSeller', 'SellerController@selectSeller')->name('selectSeller');
+Route::get('/selectStore', 'StoreController@selectStore')->name('selectStore');
+Route::get('/selectTechnical', 'SellerController@selectTechnical')->name('selectTechnical');
+
 Route::get('/store/{id}', 'StoreController@show')->name('store');
 
 Auth::routes();

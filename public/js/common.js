@@ -55,6 +55,23 @@ export const common = {
 	 * Description
 	 */
 
+	dynamicSelectSeller (data, classCss) {
+		let seller = '';
+		data.forEach(elemet => {
+			seller += `<option value="${elemet.id}"> ${elemet.name } ${elemet.lastname }</option>`
+		})
+		return seller
+	},
+
+	getTechnical (data, classCss) {
+		let technical = '';
+		data.forEach(elemet => {
+			technical += `<option value="${elemet.id}"> ${elemet.name } ${elemet.lastname }</option>`
+		})
+		return technical
+	},
+
+
 	dynamicSelect (data, classCss) {
 		let store = '';
 		data.forEach(elemet => {
@@ -63,13 +80,8 @@ export const common = {
 		return store
 	},
 
-	dynamicSelectSeller (data, classCss) {
-		let seller = '';
-		data.forEach(elemet => {
-			seller += `<option value="${elemet.id}"> ${elemet.name.toUpperCase()} ${elemet.lastname.toUpperCase()}</option>`
-		})
-		return seller
-	},
+
+
 	/**
 	 * Obtener Informacion
 	 */

@@ -30,11 +30,7 @@ class HomeController extends Controller
     public function sqlUpdate(){
         DB::table('bills')
             ->update([
-                'delete' => '0'
-            ]);
-        DB::table('clients')
-            ->update([
-                'delete' => '0'
+                'id_technical' => '1'
             ]);
     }
 }

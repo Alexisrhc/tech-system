@@ -163,4 +163,10 @@ class SellerController extends Controller
         $sellers = DB::table('users')->get();
         return response()->json($sellers);
     }
+
+    public function selectTechnical()
+    {
+        $stores = DB::table('users')->where('rol_user','technical')->get();
+        return response()->json($stores);
+    }
 }
