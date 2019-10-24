@@ -1,5 +1,4 @@
 <?php
-Route::get('/sqlUpdate', 'HomeController@sqlUpdate');
 Route::get('/store/create', 'StoreController@create');
 Route::get('/selectSeller', 'SellerController@selectSeller')->name('selectSeller');
 Route::get('/selectStore', 'StoreController@selectStore')->name('selectStore');
