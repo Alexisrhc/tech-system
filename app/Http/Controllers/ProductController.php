@@ -38,23 +38,36 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = DB::table('products')->where('status',1)->paginate(10);
+        $products = DB::table('products')->where('status', 1)
+        ->where(function ($q) use($request) {
+            $q->orWhere('code_product', 'LIKE', "%$request->valueSearch%")
+            ->orWhere('serial_product', 'LIKE', "%$request->valueSearch%")
+            ->orWhere('smart_card', 'LIKE', "%$request->valueSearch%")
+            ->orWhere('name', 'LIKE', "%$request->valueSearch%")
+            ->orWhere('model', 'LIKE', "%$request->valueSearch%");
+        })
+        ->paginate(10);
         return view('product.index', compact('products'));
     }
     /**
      * Description
      */
     public function listProduct (Request $request) {
-        if ($request) {
+        if (isset($request)) {
             $products = DB::table('products')
-                    ->orWhere('code_product', 'LIKE', "%$request->code_product%")
-                    ->orWhere('name', 'LIKE', "%$request->name%")->get();
+                    ->where('status', 1)
+                    ->where(function ($q) use ($request) {
+                        $q->orWhere('code_product', 'LIKE', "%$request->code_product%");
+                        $q->orWhere('price', 'LIKE', "%$request->price%");
+                        $q->orWhere('name', 'LIKE', "%$request->name%");
+                    })
+                    ->get();
                     return response()->json($products, 200);
         }
-        $products = DB::table('products')->get();
-        return response()->json($products, 200);
+        // $products = DB::table('products')->where('status', 1)->get();
+        // return response()->json($products, 200);
     }
     /**
      * Show the form for creating a new resource.

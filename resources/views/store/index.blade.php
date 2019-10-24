@@ -24,7 +24,26 @@
     	<div class="col">
         <div class="card shadow">
           <div class="card-header border-0">
-            <h3 class="mb-0">{{ucwords('lista de tiendas')}}</h3>
+            <div class="form-group row">
+                <h3 class="col-sm-12 col-md-9">Lista De tiendas</h3>
+                <div class="col-sm-10 col-md-3">
+                  <form  method="GET" action="{{ route('store') }}">
+                    <div class="input-group input-group-alternative">
+                      <div class="input-group-prepend">
+                        <select class="form-control form-control-sm" id="type_document">
+                          <option selected value="V-">V-</option>
+                          <option value="E-">E-</option>
+                          <option value="J-">J-</option>
+                        </select>
+                      </div>
+                        <input style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" type="text" class="text-center form-control form-control-sm" id="client_search" name="valueSearch" value="{{ old('client_search') }}" placeholder="Buscar ...">
+                      <div class="input-group-append">
+                        <button class="btn btn-info btn-sm" type="submit"><i class="fas fa-search"></i></button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
           </div>
           <div class="table-responsive">
             <table class="table align-items-center table-flush">
@@ -76,4 +95,23 @@
         </div>
       </div>
     </div>
+@endsection
+@section('script')
+<script type="module">
+  import { common } from './js/common.js';
+  $(document).on('click', () => {
+    searchBills()
+  })
+  async function searchBills () {
+    let url = {
+      url: 'bill',
+      data: {
+        valueSearch: $('#type_document').val()+$('#bill_search').val()
+      }
+    }
+   let data = await common.getData(url)
+   let header = ['id_product','serial_product', 'model', 'name', 'price','quantity', 'add'];
+   $('#table_bills').html(common.dynamicTable(header, data))
+  }
+</script>
 @endsection

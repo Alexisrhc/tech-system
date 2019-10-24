@@ -193,17 +193,17 @@
 	 * Listar productos en la tabla productos
 	 */
 	$( "#click" ).click(() => {
-		getTableProduct()
+		let url = {
+			url: 'listproduct/',
+			data: {}
+		}
+		getTableProduct(url)
 	})
 
 	/*
 	 * obtener tabla con productos
 	 */
-	function getTableProduct () {
-		let url = {
-			url: 'listproduct/',
-			data: {}
-		}
+	function getTableProduct (url) {
 		common.getData(url)
 			.then(res => {
 				let header = ['id_product','serial_product', 'model', 'name', 'price','quantity', 'add'];
@@ -312,7 +312,7 @@
 			data: common.paramsSearch(valueSearch, value)
 		}
 		setTimeout(() => {
-			getTableProduct()
+			getTableProduct(url)
 		}, 200)
 	})
 

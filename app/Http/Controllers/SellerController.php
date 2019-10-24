@@ -43,9 +43,13 @@ class SellerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $Users = DB::table('users')->where('id', '!=', Auth::user()->id)->paginate(10);
+        $Users = DB::table('users')->where('id', '!=', Auth::user()->id)
+        ->where(function ($q) use($request) {
+            $q->orWhere('document', 'LIKE', "%$request->valueSearch%");
+        })
+        ->paginate(10);
         return view('employee.index', compact('Users'));
     }
 

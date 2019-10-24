@@ -39,9 +39,13 @@ class ClientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $clients = DB::table('clients')->where('delete', 0)->paginate(10);
+        $clients = DB::table('clients')->where('delete', 0)
+        ->where(function ($q) use($request) {
+            $q->orWhere('document', 'LIKE', "%$request->valueSearch%");
+        })
+        ->paginate(10);
         return view('client.index', ['clients' => $clients]);
     }
 

@@ -27,9 +27,12 @@ class StoreController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $stores = DB::table('stores')->paginate(10);
+        $stores = DB::table('stores')->where(function ($q) use($request) {
+            $q->orWhere('name', 'LIKE', "%$request->valueSearch%");
+        })
+        ->paginate(10);
         return view('store.index', ['stores' => $stores]);
     }
 

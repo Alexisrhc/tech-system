@@ -65,7 +65,7 @@
 				<div class="col-12">
 					<div class="form-group row">
 						<label for="lastname" class="col-sm-3 col-form-label form-control-sm text-right">
-							{{ ucwords('nombre(s):') }}
+							{{ ucwords('Apellido(s):') }}
 						</label>
 						<div class="col-sm-9">
 							<div class="input-group input-group-alternative">
@@ -88,7 +88,7 @@
 				<div class="col-12">
 					<div class="form-group row">
 						<label for="address" class="col-sm-3 col-form-label form-control-sm text-right">
-							{{ ucwords('nombre(s):') }}
+							{{ ucwords('Dirección(s):') }}
 						</label>
 						<div class="col-sm-9">
 							<div class="input-group input-group-alternative">

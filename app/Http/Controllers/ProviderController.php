@@ -39,9 +39,16 @@ class ProviderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $providers = DB::table('providers')->paginate(10);
+        $providers = DB::table('providers')
+        ->where(function ($q) use($request) {
+            $q->orWhere('rif', 'LIKE', "%$request->valueSearch%")
+            ->orWhere('business_name', 'LIKE', "%$request->valueSearch%")
+            ->orWhere('name', 'LIKE', "%$request->valueSearch%")
+            ->orWhere('product', 'LIKE', "%$request->valueSearch%");
+        })
+        ->paginate(10);
         return view('provider.index', compact('providers'));
     }
 

@@ -14,7 +14,7 @@ class BillController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $bills = DB::table('bills')
             ->select(
@@ -40,7 +40,11 @@ class BillController extends Controller
                 'bills.id_client',
             )
             ->where('bills.delete',0)
+            ->where(function ($q) use ($request) {
+                $q->orWhere('clients.document', 'LIKE', "%$request->valueSearch%");
+            })
             ->paginate(10);
+
         return view('bill.index', compact('bills'));
     }
 

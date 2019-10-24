@@ -24,7 +24,20 @@
         <div class="col">
           <div class="card shadow">
             <div class="card-header border-0">
-              <h3 class="mb-0">{{ucwords('lista de proveedores')}}</h3>
+              <div class="form-group row">
+                <h3 class="col-sm-12 col-md-9 mb-0">Lista De Proveedores</h3>
+                <div class="col-sm-10 col-md-3">
+                  <form  method="GET" action="{{ route('provider') }}">
+                    <div class="input-group input-group-alternative">
+
+                        <input style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" type="text" class="text-center form-control form-control-sm" id="client_search" name="valueSearch" value="{{ old('client_search') }}" placeholder="Buscar ...">
+                      <div class="input-group-append">
+                        <button class="btn btn-info btn-sm" type="submit"><i class="fas fa-search"></i></button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
             </div>
             <div class="table-responsive">
               <table class="table align-items-center table-flush">
@@ -45,10 +58,10 @@
                   @foreach ($providers as $provider)
                     <tr>
                       <td>
-                        {{$provider->rif}}
+                        {{$provider->product}}
                       </td>
                       <td>
-                        {{$provider->product}}
+                        {{$provider->rif}}
                       </td>
                       <td>
                         {{ ucwords($provider->business_name)}}
