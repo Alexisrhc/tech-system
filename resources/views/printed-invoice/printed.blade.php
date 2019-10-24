@@ -158,7 +158,7 @@
   <body>
     <header class="clearfix">
       <div id="logo">
-        <img src="../public/assets/img/brand/blue_best_best.png" width="900px">
+        {{-- <img src="../public/assets/img/brand/blue_best_best.png" width="900px"> --}}
       </div>
       <h3>COMPROBANTE DE VENTA</h3>
       <div id="company" class="clearfix">
