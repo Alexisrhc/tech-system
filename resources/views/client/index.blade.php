@@ -29,7 +29,7 @@
                   <form  method="GET" action="{{ route('client') }}">
                     <div class="input-group input-group-alternative">
                       <div class="input-group-prepend">
-                        <select class="form-control form-control-sm" id="type_document">
+                        <select class="form-control form-control-sm" name="type_document" id="type_document">
                           <option selected value="V-">V-</option>
                           <option value="E-">E-</option>
                           <option value="J-">J-</option>

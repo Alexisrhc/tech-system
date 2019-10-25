@@ -41,8 +41,9 @@ class BillController extends Controller
             )
             ->where('bills.delete',0)
             ->where(function ($q) use ($request) {
-                $q->orWhere('clients.document', 'LIKE', "%$request->valueSearch%");
+                $q->orWhere('clients.document', 'LIKE', "%$request->type_document"."$request->valueSearch%");
             })
+            ->orderBy('created_at','DESC')
             ->paginate(10);
 
         return view('bill.index', compact('bills'));

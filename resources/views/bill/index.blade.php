@@ -21,7 +21,7 @@
                   <form  method="GET" action="{{ route('bill') }}">
                     <div class="input-group input-group-alternative">
                       <div class="input-group-prepend">
-                        <select class="form-control form-control-sm" id="type_document">
+                        <select class="form-control form-control-sm" name="type_document" id="type_document">
                           <option selected value="V-">V-</option>
                           <option value="E-">E-</option>
                           <option value="J-">J-</option>
@@ -95,23 +95,4 @@
           </div>
         </div>
     </div>
-@endsection
-@section('script')
-<script type="module">
-  import { common } from './js/common.js';
-  $(document).on('click', () => {
-    searchBills()
-  })
-  async function searchBills () {
-    let url = {
-      url: 'bill',
-      data: {
-        valueSearch: $('#type_document').val()+$('#bill_search').val()
-      }
-    }
-   let data = await common.getData(url)
-   let header = ['id_product','serial_product', 'model', 'name', 'price','quantity', 'add'];
-   $('#table_bills').html(common.dynamicTable(header, data))
-  }
-</script>
 @endsection

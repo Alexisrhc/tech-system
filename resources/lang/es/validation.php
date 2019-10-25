@@ -192,8 +192,5 @@ return [
         'quantity'              => 'cantidad',
         'code_product'          => 'código',
         'product'               => 'producto',
-        'administrativy'        => 'administrativo',
-
-
     ],
 ];

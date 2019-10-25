@@ -110,15 +110,15 @@
                 </div>
 
                 <div class="text-center">
-                  <button type="submit" class="btn btn-primary" id="login_store">
+                  <button type="submit" class="btn btn-primary btn-block" id="login_store">
                         {{ __('Inicar') }}
                     </button>
 
-                    @if (Route::has('password.request'))
+                    {{-- @if (Route::has('password.request'))
                         <a class="btn btn-link" href="{{ route('password.request') }}">
                             {{ __('Recuperar mi clave') }}
                         </a>
-                    @endif
+                    @endif --}}
                 </div>
               </form>
             </div>

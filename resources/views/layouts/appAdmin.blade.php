@@ -108,7 +108,7 @@
         </ul>
 
         {{-- admin --}}
-        @if(Auth::user()->rol_user == 'admin')
+        @if(Auth::user()->rol_user == 'admin' || Auth::user()->rol_user == 'administrativy')
         <hr class="my-3">
         <ul class="navbar-nav">
           <li class="nav-item">

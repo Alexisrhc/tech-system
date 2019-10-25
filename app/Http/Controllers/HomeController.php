@@ -28,9 +28,9 @@ class HomeController extends Controller
     }
 
     public function sqlUpdate(){
-        DB::table('bills')
+        DB::table('users')
             ->update([
-                'id_technical' => '1'
+                'status' => '1'
             ]);
     }
 }

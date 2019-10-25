@@ -16,7 +16,7 @@ class CheckRole
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user()->rol_user == 'admin') {
+        if (Auth::user()->rol_user == 'admin' || Auth::user()->rol_user == 'administrativy') {
             return $next($request);
         }
         return redirect('/home');

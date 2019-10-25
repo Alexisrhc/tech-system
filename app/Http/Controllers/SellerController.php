@@ -45,7 +45,7 @@ class SellerController extends Controller
      */
     public function index(Request $request)
     {
-        $Users = DB::table('users')->where('id', '!=', Auth::user()->id)
+        $Users = DB::table('users')->where('id', '!=', Auth::user()->id)->where('status', '1')
         ->where(function ($q) use($request) {
             $q->orWhere('document', 'LIKE', "%$request->valueSearch%");
         })
@@ -80,6 +80,7 @@ class SellerController extends Controller
         $employee->email = $request->email;
         $employee->password = Hash::make($request->password);
         $employee->rol_user = $request->rol_user;
+        $employee->status = 1;
         $employee->save();
         return redirect('employee')->with('success', 'Agregado exitosamente');
     }
@@ -131,6 +132,7 @@ class SellerController extends Controller
                 'lastname'=> $request->lastname,
                 'rol_user' => $request->rol_user,
                 'password' => Hash::make($request->password),
+                'status' => 1,
             ];
         } else {
             $dataUser = [
@@ -153,8 +155,10 @@ class SellerController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('users')->where('id', $id)->delete();
-        //mandar mensaje de succes
+        DB::table('users')->where('id', $id)
+            ->update([
+                'status' => '0'
+            ]);
         return redirect('employee')->with('success', 'Eliminado exitosamente');
     }
 

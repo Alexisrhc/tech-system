@@ -43,7 +43,7 @@ class ClientController extends Controller
     {
         $clients = DB::table('clients')->where('delete', 0)
         ->where(function ($q) use($request) {
-            $q->orWhere('document', 'LIKE', "%$request->valueSearch%");
+            $q->orWhere('document', 'LIKE', "%$request->type_document"."$request->valueSearch%");
         })
         ->paginate(10);
         return view('client.index', ['clients' => $clients]);

@@ -205,11 +205,6 @@
       	</div>
       </div>
       <div id="project">
-      	<div>
-        	<span>&nbsp;</span>
-      	</div>
-      </div>
-      <div id="project">
         <div>
           <span>&nbsp;</span>
         </div>

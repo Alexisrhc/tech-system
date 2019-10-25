@@ -117,7 +117,7 @@
             <div class="card-body pt-0 pt-md-4">
             	{{-- <h3 class="mb-4">{{ ucwords('datos de producto:') }}</h3> --}}
             	<div class="row mb-2 justify-content-end">
-			        <div class="col-sm-12 col-md-12 col-xl-3 text-center ">
+			        <div class="col-sm-12 col-md-12 col-xl-3 text-center searchProduct">
 			        	<label class="small">
 							{{ ucwords('buscar productos:') }}
 						</label>
@@ -189,7 +189,7 @@
 	import { common } from './js/common.js';
 
 
-
+	$( ".searchProduct" ).hide()
 	let products = []
 	/**
 	 * Listar productos en la tabla productos
@@ -259,6 +259,7 @@
 				$('#lastname').val(res[0].lastname)
 				$('#phone').val(res[0].phone)
 				$('#address').val(res[0].address)
+				$( ".searchProduct" ).show()
 				let data = {
 					status: 'active',
 					date: common.formatDate()
