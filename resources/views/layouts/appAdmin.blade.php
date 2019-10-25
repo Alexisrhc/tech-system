@@ -93,6 +93,12 @@
               Inicio
             </a>
           </li>
+          <li class="nav-item ">
+            <a class="nav-link {{ Request::is('installation') || Request::is('installation/create') ? 'active' : '' }}" href="{{ route('installation') }}">
+              <i class="ni ni-settings-gear-65 text-primary"></i>
+              Instalación
+            </a>
+          </li>
           <li class="nav-item">
             <a class="nav-link {{ Request::is('bill') || Request::is('bill/create')  ? 'active' : '' }}" href="{{ route('bill') }}">
               <i class="ni ni-folder-17 text-primary"></i>

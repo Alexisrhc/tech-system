@@ -1,5 +1,4 @@
 <?php
-Route::get('/sqlUpdate', 'HomeController@sqlUpdate');
 Route::get('/store/create', 'StoreController@create');
 Route::get('/selectSeller', 'SellerController@selectSeller')->name('selectSeller');
 Route::get('/selectStore', 'StoreController@selectStore')->name('selectStore');
@@ -44,6 +43,10 @@ Route::middleware(['auth'])->group(function () {
     // Route bill
     Route::resource('/bill', 'BillController');
     Route::get('/bill', 'BillController@index')->name('bill');
+
+    //Route Instalation
+    Route::resource('/installation', 'InstallationController');
+    Route::get('/installation', 'InstallationController@index')->name('installation');
     // Route bill_temporal
     Route::resource('/bill-temporal', 'BillTemporalController');
     // Route bill_detail

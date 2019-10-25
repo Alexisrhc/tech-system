@@ -20,14 +20,6 @@
 								</select>
 		            		</div>
 		            		<input style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" type="text" class="text-center form-control @error('document') is-invalid @enderror form-control-sm" id="document" name="document" value="{{ old('document') }}" placeholder="00000000">
-							@error('document')
-								<span class="invalid-feedback text-center" role="alert">
-									<strong>{{ $message }}</strong>
-								</span>
-							@enderror
-		            		{{-- <div class="input-group-append">
-		            			<button class="btn btn-info btn-sm" id="search"><i class="fas fa-search"></i></button>
-		            		</div> --}}
 			            </div>
 			        </div>
 					{{-- APELLIDO --}}
