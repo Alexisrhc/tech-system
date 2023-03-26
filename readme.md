@@ -9,7 +9,7 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 
 ## Contribiciones
 
-una de lasa primeras contribuciones la tiene el señor Luis Palma @Palma001
+una de las primeras contribuciones la tiene el señor Luis Palma @Palma001
 
 ## Licencia
 
